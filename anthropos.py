@@ -15,6 +15,6 @@ class Anthropos:
         self.children = []
 
 
-#COMMENT TO PULL TO LAPTOP
+#if this can make it to the desktop without a clone I'll call it for now
 
 
