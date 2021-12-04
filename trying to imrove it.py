@@ -20,7 +20,9 @@ baby_wait_list = []
 next_parent_in_line_to_have_a_baby = None
 def tys_func():
     print("dis tys func")
+    print("edit by tyler")
     print("dans edit")
+
 
 # todo make it so people die at certain age and have a childhood in which they cannot reproduce
 # and you can enter peoples initials to sign them out
