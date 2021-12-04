@@ -1,30 +1,28 @@
 class Anthropos:
 
-    isAlive = False
-    children = []
-
-    def die(self, death_eon):
+    def slay(self):
         self.isAlive = False
-        self.eons_lived = death_eon - self.birth_eon
+        if self.isTheist:
+            self.inAfterLife = True
 
     def beget(self, other):
-        if self.num_children < 2:
-            other.isAlive = True
-            if self.left_child is None:
-                self.left_child = other
-            else:
-                self.right_child = other
-            self.num_children += 1
+        other.isAlive = True
+        self.children.append(other)
 
-    def __init__(self, name, birth_eon):
+    def __init__(self):
         self.isAlive = True
-        self.left_child = None
-        self.right_child = None
-        self.num_children = 0
-        self.name = name
-        self.birth_eon = birth_eon
-        self.eons_lived = 0
+        self.children = []
+        self.inAfterLife = False
+        self.isTheist = True
+
+    def commitApostasy(self):
+        self.isTheist = False
 
 
 
+
+
+dan = Anthropos()
+dan.commitApostasy()
+dan.slay()
 
