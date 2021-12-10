@@ -3,8 +3,8 @@ import random  # random.shuffle(your_list)
 # edit before game
 player_name_list = 'Kelsey,Kaley,Connor,Dan,Tom,Rae,Alix,Molly,Taya,Kori,Carter,Rae,Ella,Trent,Aubrey,'.split(',')
 # pick how many turns are in each life stage
-childhood = 2
-adulthood = 4
+childhood = 0 # turns which young people cannot have children
+lifespan = 4 #total turns allowed until a person dies of old age
 # should be able to leave the rest alone! :)
 
 player_list = []
@@ -42,16 +42,18 @@ class Person:
         self.life_number_for_player = life_number_for_player
         self.player = player
         self.parent = parent
-        try:
-            parent.children.append(self)
-        except AttributeError:
-            if date != 1:
-                print(f'ERROR THEY DIDN\'T GET A PARENT')
         self.birthday = date
         self.alive = True
         self.age = 0
         self.children = []
         self.date_of_death = None
+        add_to_book_of_life(self)
+        pop_parent_off_of_baby_wait_list(parent)
+        try:
+            parent.children.append(self)
+        except AttributeError:
+            if date != 1:
+                print(f'ERROR THEY DIDN\'T GET A PARENT')
         if parent is not None:
             print(
                 f'\n\nWelcome to the world, {self.player.name}! Go tell {self.parent.player.name} that you\'re their kid!\n')
@@ -62,9 +64,9 @@ class Person:
         self.date_of_death = date
         self.player.times_played += 1
         print(
-            f'\nHAHA\n{self.player.name} DIED\nYour stats for life number {self.life_number_for_player}:\nAge:\n{self.age}\nParent:\n{self.parent}\nChildren:\n')
+            f'\nHAHA\n{self.player.name} DIED\nYour stats for life number {self.life_number_for_player}:\n\t{self.age} <-Age\n\t{self.parent.player.name} <-Parent\n\tChildren:\n')
         for child in self.children:
-            print(f'{child.player.name}\n')
+            print(f'\n\t{child.player.name}')
         total_living_descendants = 0
         try:
             total_living_descendants = len(self.get_descendants())
@@ -86,7 +88,7 @@ class Person:
         except TypeError:
             living_descendants_count = 0
         print(f'({living_descendants_count} of which are alive\n)')
-        print(f'_____\n')
+        print(f'\n')
 
     def get_descendants(self):
         descendant_list = []  # can counter be in method? todo
@@ -123,21 +125,18 @@ def make_new_baby_wait_list():
     global baby_wait_list
     baby_wait_list = []
 
+    #todo dan help ony does one child
     # graduate old children into adulthood
     for x in living_children_list:
-        if x.age > childhood:
+        if x.age >= childhood:
             living_adults_list.append(x)
-            for y in living_children_list:
-                if x.name is y.name:
-                    living_children_list.remove(x)
+            living_children_list.remove(x)
 
     # graduate adults with 2 children into elderhood
     for x in living_adults_list:
         if len(x.children) > 1:
             living_elders_list.append(x)
-            for y in living_adults_list:
-                if x.name is y.name:
-                    living_adults_list.remove(x)
+            living_adults_list.remove(x)
 
     # create que for adults to have babies
     for x in living_adults_list:
@@ -149,14 +148,21 @@ def make_new_baby_wait_list():
         next_parent_in_line_to_have_a_baby = baby_wait_list[0]
 
 
-def pop_parent_off_of_baby_wait_list(baby_they_are_having):
+def pop_parent_off_of_baby_wait_list(parent_which_just_had_their_baby):
     global next_parent_in_line_to_have_a_baby
     global baby_wait_list
     try:
-        next_parent_in_line_to_have_a_baby.children.append(baby_they_are_having)
-        baby_wait_list.remove(baby_wait_list[-1])
-    except:
-        pass
+        next_parent_in_line_to_have_a_baby = baby_wait_list[1]
+        try:
+            baby_wait_list.remove(parent_which_just_had_their_baby)
+        except ValueError:
+            pass
+    except IndexError or ValueError:
+        try:
+            if len(baby_wait_list) == 1:
+                baby_wait_list.remove(parent_which_just_had_their_baby)
+        except ValueError:
+            pass
 
 
 def add_to_book_of_life(baby):
@@ -233,7 +239,6 @@ while True:
                             print(
                                 f'\nWelcome, {player_signing_in_or_out.name}. Looks like you\'ll be the Adam/Eve of this world! No pressure. Oh, and don\'t let your kids fight like Cain and Abel...\n')
                             baby = Person(player_signing_in_or_out, 1, None)
-                            add_to_book_of_life(baby)
                             break
                         # if there are other people but no one ready to have a baby, then they need to wait!
                         else:
@@ -249,7 +254,6 @@ while True:
                                 life_number_for_player_that_will_soon_be_born = x.times_played + 1
                                 baby = Person(x, life_number_for_player_that_will_soon_be_born,
                                               next_parent_in_line_to_have_a_baby)
-                                add_to_book_of_life(baby)
                                 try:
                                     pop_parent_off_of_baby_wait_list(baby)
                                 except NameError:
@@ -262,10 +266,18 @@ while True:
 
     # Next turn because I entered 0
     if entered_id > -1:
+        #age people
+        for x in living_people_list:
+            x.age += 1
+        #kill old people
+        for x in living_people_list:
+            if x.age > lifespan:
+                x.die()
+                x = input(f'\nHit enter:\n')
         make_new_baby_wait_list()
         print(
             f'TURN {date + 1}:\nStats:\n\t{len(living_people_list)} -> Pop\n\t{len(baby_wait_list)} -> Fertile pop\n\t{len(people_list)} -> Total people ever lived\n')  # todo add stats here: pop, total people ever lived, total fertile players
         date += 1
     else:
-        x = input(f'What turns would you like printed?')
+        x = input(f'What turns would you like printed? not implemented')
         print_family_tree()
