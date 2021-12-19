@@ -10,18 +10,19 @@ class Game:
         self.player_name_list = player_name_list
         self.childhood = childhood
         self.lifespan = lifespan
-        player_list = []
-        people_list = []
-        living_people_list = []
-        living_children_list = []
-        living_adults_list = []
-        living_elders_list = []
-        baby_wait_list = []
+        self.player_list = []
+        self.people_list = []
+        self.living_people_list = []
+        self.living_children_list = []
+        self.living_adults_list = []
+        self.living_elders_list = []
+        self.baby_wait_list = []
         # should be a dictionary
-        string_of_living = []
+        self.string_of_living = []
         # wait_list for fertile players waiting to having a baby
-        baby_wait_list = []
-        next_parent_in_line_to_have_a_baby = None
+        self.baby_wait_list = []
+        self.next_parent_in_line_to_have_a_baby = None
+        self.date = 0
 
     # todo and you can enter peoples initials to sign them out
 
@@ -58,19 +59,19 @@ class Game:
         if len(self.baby_wait_list) > 0:
             next_parent_in_line_to_have_a_baby = self.baby_wait_list[0]
 
-    def pop_parent_off_of_baby_wait_list(parent_which_just_had_their_baby):
+    def pop_parent_off_of_baby_wait_list(self, parent_which_just_had_their_baby):
         # global next_parent_in_line_to_have_a_baby
         # global baby_wait_list
         try:
-            next_parent_in_line_to_have_a_baby = baby_wait_list[1]
+            next_parent_in_line_to_have_a_baby = self.baby_wait_list[1]
             try:
-                baby_wait_list.remove(parent_which_just_had_their_baby)
+                self.baby_wait_list.remove(parent_which_just_had_their_baby)
             except ValueError:
                 pass
         except IndexError or ValueError:
             try:
-                if len(baby_wait_list) == 1:
-                    baby_wait_list.remove(parent_which_just_had_their_baby)
+                if len(self.baby_wait_list) == 1:
+                    self.baby_wait_list.remove(parent_which_just_had_their_baby)
             except ValueError:
                 pass
 
@@ -134,7 +135,7 @@ class Game:
 
                         # if alive, die
                         self.refresh_string_of_living_people()
-                        if player_signing_in_or_out.name in string_of_living:  # there's gotta be a better way... todo
+                        if player_signing_in_or_out.name in self.string_of_living:  # there's gotta be a better way... todo
                             for person in self.living_people_list:
                                 if person.player.name == player_signing_in_or_out.name:
                                     person.die()
@@ -142,11 +143,12 @@ class Game:
                         # else dead, so be birthed!
                         else:
                             # find out if there are are no fertile people who can birth the player back into the game
-                            if len(baby_wait_list) == 0:
+                            if len(self.baby_wait_list) == 0:
                                 if len(self.living_people_list) == 0:
                                     print(
                                         f'\nWelcome, {player_signing_in_or_out.name}. Looks like you\'ll be the Adam/Eve of this world! No pressure. Oh, and don\'t let your kids fight like Cain and Abel...\n')
-                                    baby = Person(player_signing_in_or_out, 1, None)
+                                    baby = Person(player_signing_in_or_out, 1, None, self)
+
                                     break
                                 # if there are other people but no one ready to have a baby, then they need to wait!
                                 else:
@@ -161,12 +163,12 @@ class Game:
                                     if x.name == name_of_guy_that_is_being_birthed:
                                         life_number_for_player_that_will_soon_be_born = x.times_played + 1
                                         baby = Person(x, life_number_for_player_that_will_soon_be_born,
-                                                      next_parent_in_line_to_have_a_baby)
+                                                      self.next_parent_in_line_to_have_a_baby)
                                         try:
                                             self.pop_parent_off_of_baby_wait_list(baby)
                                         except NameError:
                                             print(f'you did not have a parent')
-                                        if len(baby_wait_list) == 0:
+                                        if len(self.baby_wait_list) == 0:
                                             print(f'\nNO MORE BABIES CAN BE BORN THIS TURN\n')
                                         break
                     else:
@@ -184,7 +186,7 @@ class Game:
                         x = input(f'\nHit enter:\n')
                 self.make_new_baby_wait_list()
                 print(
-                    f'TURN {date + 1}:\nStats:\n\t{len(self.living_people_list)} -> Pop\n\t{len(baby_wait_list)} -> Fertile pop\n\t{len(self.people_list)} -> Total people ever lived\n')  # todo add stats here: pop, total people ever lived, total fertile players
+                    f'TURN {date + 1}:\nStats:\n\t{len(self.living_people_list)} -> Pop\n\t{len(self.baby_wait_list)} -> Fertile pop\n\t{len(self.people_list)} -> Total people ever lived\n')  # todo add stats here: pop, total people ever lived, total fertile players
                 date += 1
             else:
                 x = input(f'What turns would you like printed? not implemented')

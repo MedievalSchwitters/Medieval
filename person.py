@@ -1,17 +1,21 @@
 # A person is just one time that a player played. A player will make a new person every time they play.
 class Person:
 
-    def __init__(self, player, life_number_for_player, parent):
+    def __init__(self, player, life_number_for_player, parent, game=None):
+
         self.life_number_for_player = life_number_for_player
         self.player = player
         self.parent = parent
-        self.birthday = date
+        self.game = game
+        self.birthday = game.date
         self.alive = True
         self.age = 0
         self.children = []
         self.date_of_death = None
-        add_to_book_of_life(self)
-        pop_parent_off_of_baby_wait_list(parent)
+        if self.game is None:
+            self.game = parent.game
+        game.add_to_book_of_life(self)
+        game.pop_parent_off_of_baby_wait_list(parent)
         try:
             parent.children.append(self)
         except AttributeError:
