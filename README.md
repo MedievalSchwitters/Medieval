@@ -1,2 +1,2 @@
 # Medieval
-Python files for medieval
+Python files for medieval game

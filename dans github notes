@@ -1,0 +1,21 @@
+initialize local project from github repo:
+    ~git clone <<insert copy pasted ssh from github>>
+    Then, create new ide project from the folder that this generates. Do the above step in a bare terminal, not the ide
+
+update local project from github repo
+    ~git pull
+
+update github repo from local project
+    add all files to "staging area/commit zone"
+        ~git add .
+    consider "staging area/commit zone" complete and ready to push
+        ~git commit -m"<<commit message(in quotes)>>"
+    send changes to remote github repo
+        ~git push (may have to set upstream branch if not already created; just copy paste the suggest command from terminal)
+
+see which branch you're on
+    ~git branch
+create branch(better to do this in github)
+    ~git branch <<branch name>>
+change branch
+    ~git checkout <<branch name>>
