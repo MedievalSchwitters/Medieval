@@ -11,8 +11,10 @@ submit your changes to git
         you should see red stuff
     git add .
         tells git what to track
-    git commit -m [note on what you changed]
-        saveschanges to git
+    git status
+        you should see green stuff
+    git commit -m"[note on what you changed]"
+        saves changes to git
     git push
         uploads the git data and code to github
         if you have an error, copy the last part of error message and push that, ex
