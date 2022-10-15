@@ -1,0 +1,34 @@
+<div id="players" class="players-container">
+    <div>
+        <div item-header class="item-header">
+            Dead Players List:
+        </div>
+        <div *ngFor="let player of deadPlayers">
+            <button class="button-7" role="button" (click)="alivifyPlayer(player)">
+                {{player}}
+            </button>
+        </div>
+        <button *ngIf="!playersAddedByCSV" class="button-7" role="button" (click)="addPlayersByCSV()">
+            add players by CSV
+        </button>
+    </div>
+    <div>
+        <div class="item-header">
+            SEASON:
+        </div>
+        <div class="phase-text">
+            {{currentSeason}}
+        </div>
+    </div>
+
+    <div id="living-players">
+        <div class="living-players" class="item-header">
+            Living Players List:
+        </div>
+        <div *ngFor="let player of livingPlayers">
+            <button class="button-7" role="button" (click)="killPlayer(player)">
+                {{player}}
+            </button>
+        </div>
+    </div>
+</div>
