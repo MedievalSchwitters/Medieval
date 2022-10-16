@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Players } from '../player';
 import { HttpClient } from '@angular/common/http';
-import { Seasons } from '../phase';
+import { Person } from '../person';
 
 @Component({
   selector: 'app-players-list',
@@ -13,7 +13,10 @@ export class PlayersListComponent implements OnInit {
   deadPlayers: string[] = [];
   livingPlayers: string[] = [];
   playersAddedByCSV = false;
-  currentSeason = Seasons.SOWING;
+  paused: boolean = false;
+  protosAnthropos: Person|null = null;
+  
+
   constructor(private http: HttpClient) { }
 
   addPlayersByCSV(): void{
@@ -31,6 +34,17 @@ export class PlayersListComponent implements OnInit {
   killPlayer(player: string): void{
     this.livingPlayers = this.livingPlayers.filter(name => name !== player);
     this.deadPlayers.push(player);
+  }
+
+  updateFerility(people: Person[]){
+    people.forEach(person => {
+      
+    });
+  }
+
+  iterateTime(){
+    this.paused = !this.paused;
+
   }
   
   ngOnInit(): void {

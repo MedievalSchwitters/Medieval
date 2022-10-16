@@ -4,7 +4,7 @@
             Dead Players List:
         </div>
         <div *ngFor="let player of deadPlayers">
-            <button class="button-7" role="button" (click)="alivifyPlayer(player)">
+            <button class="button-7-dead" role="button" (click)="alivifyPlayer(player)">
                 {{player}}
             </button>
         </div>
@@ -13,12 +13,12 @@
         </button>
     </div>
     <div>
-        <div class="item-header">
-            SEASON:
-        </div>
-        <div class="phase-text">
-            {{currentSeason}}
-        </div>
+        <div class="phase-text" *ngIf="paused">
+            PAUSED
+          </div>
+          <div class="phase-text" *ngIf="!paused">
+           UNPAUSED
+          </div>
     </div>
 
     <div id="living-players">
@@ -26,7 +26,7 @@
             Living Players List:
         </div>
         <div *ngFor="let player of livingPlayers">
-            <button class="button-7" role="button" (click)="killPlayer(player)">
+            <button class="button-7-alive" role="button" (click)="killPlayer(player)">
                 {{player}}
             </button>
         </div>

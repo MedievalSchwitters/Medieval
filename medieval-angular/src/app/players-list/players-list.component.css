@@ -15,8 +15,8 @@
 
 
 /* CSS */
-.button-7 {
-  background-color: #0095ff;
+.button-7-alive {
+  background-color: greenyellow;
   border: 1px solid transparent;
   border-radius: 3px;
   box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
@@ -41,16 +41,56 @@
   white-space: nowrap;
 }
 
-.button-7:hover,
+.button-7-alive:hover,
 .button-7:focus {
-  background-color: #07c;
+  background-color: crimson;
 }
 
-.button-7:focus {
+.button-7-alive:focus {
   box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
 }
 
-.button-7:active {
-  background-color: #0064bd;
+.button-7-alive:active {
+  background-color: red;
+  box-shadow: none;
+}
+
+.button-7-dead {
+  background-color: crimson;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 2;
+  outline: none;
+  padding: 8px 8px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.button-7-dead:hover,
+.button-7:focus {
+  background-color: greenyellow;
+}
+
+.button-7-dead:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.button-7-dead:active {
+  background-color: green;
   box-shadow: none;
 }
