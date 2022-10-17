@@ -13,14 +13,11 @@
         </button>
     </div>
     <div>
-        <div class="phase-text" *ngIf="paused">
+        <button  class="button-7 phase-text" *ngIf="paused" (click)="pauseButton()">
             PAUSED
-          </div>
-          <div class="phase-text" *ngIf="!paused">
+          </button>
+          <button class="button-7 phase-text" *ngIf="!paused" (click)="pauseButton()">
            UNPAUSED
-          </div>
-          <button class="button-7" role="button" (click)="pauseButton()">
-            pause / unpause
           </button>
     </div>
 

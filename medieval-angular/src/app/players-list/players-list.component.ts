@@ -34,7 +34,7 @@ export class PlayersListComponent implements OnInit {
 
   alivifyPlayer(player: string): void{
     if (!this.protosAnthropos){
-      console.log(player + " created ex nihlo; may they not eat any forbidden fruits...");
+      console.log(player + " created ex nihilo; may they not eat any forbidden fruits...");
       this.people = [];
       this.protosAnthropos = new Person(player);
       this.people.push(this.protosAnthropos);
@@ -61,6 +61,10 @@ export class PlayersListComponent implements OnInit {
   killPlayer(player: string): void{
     this.livingPlayers = this.livingPlayers.filter(name => name !== player);
     this.deadPlayers.push(player);
+    let person = this.getPersonByName(player);
+    if(person){
+      person.alive = false;
+    }
     this.livingPeople = this.livingPeople.filter(person => person.name !== player);
   }
 

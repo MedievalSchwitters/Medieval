@@ -5,17 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlayersListComponent } from './players-list/players-list.component';
 import {HttpClientModule} from '@angular/common/http';
+import { TreeComponent } from './tree/tree.component';
+import { GojsAngularModule } from 'gojs-angular';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlayersListComponent
+    PlayersListComponent,
+    TreeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule  
+    HttpClientModule,
+    GojsAngularModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
