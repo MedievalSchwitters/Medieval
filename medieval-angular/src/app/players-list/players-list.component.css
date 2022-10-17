@@ -83,7 +83,7 @@
 
 .button-7-dead:hover,
 .button-7:focus {
-  background-color: greenyellow;
+  background-color: rgb(255, 47, 179);
 }
 
 .button-7-dead:focus {

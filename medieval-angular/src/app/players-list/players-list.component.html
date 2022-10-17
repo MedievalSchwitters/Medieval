@@ -19,15 +19,18 @@
           <div class="phase-text" *ngIf="!paused">
            UNPAUSED
           </div>
+          <button class="button-7" role="button" (click)="pauseButton()">
+            pause / unpause
+          </button>
     </div>
 
-    <div id="living-players">
+    <div id="living-people">
         <div class="living-players" class="item-header">
             Living Players List:
         </div>
-        <div *ngFor="let player of livingPlayers">
-            <button class="button-7-alive" role="button" (click)="killPlayer(player)">
-                {{player}}
+        <div *ngFor="let person of livingPeople">
+            <button class="button-7-alive" role="button" (click)="killPlayer(person.name)">
+                {{person.name}}, age: {{person.age}}
             </button>
         </div>
     </div>
