@@ -1,7 +1,6 @@
-import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import * as go from 'gojs';
-import { DataSyncService, DiagramComponent, PaletteComponent } from 'gojs-angular';
-import produce from "immer";
+import { DiagramComponent, PaletteComponent } from 'gojs-angular';
 
 @Component({
   selector: 'app-tree',
@@ -69,7 +68,7 @@ export class TreeComponent {
    * This method should iterate over thoe changes and update state to keep in sync with the FoJS model.
    * This can be done with any preferred state management method, as long as immutability is preserved.
    */
-  public diagramModelChange = function(changes: go.IncrementalData) {
+  public diagramModelChange = function (changes: go.IncrementalData) {
     console.log(changes);
     // see gojs-angular-basic for an example model changed handler that preserves immutability
     // when setting state, be sure to set skipsDiagramUpdate: true since GoJS already has this update
@@ -98,3 +97,4 @@ export class TreeComponent {
   }
 
 }
+
