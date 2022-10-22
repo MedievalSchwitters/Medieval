@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { TreeComponent } from './tree/tree.component';
 import { GojsAngularModule } from 'gojs-angular';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,6 +20,7 @@ import { GojsAngularModule } from 'gojs-angular';
     AppRoutingModule,
     HttpClientModule,
     GojsAngularModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

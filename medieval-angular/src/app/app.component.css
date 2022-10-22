@@ -1,19 +1,20 @@
 @import url(//db.onlinewebfonts.com/c/f3258385782c4c96aa24fe8b5d5f9782?family=Old+English+Text+MT);
 
-.players-container{
-    display: flex; /* or inline-flex */
-    justify-content: space-between;
+.players-container {
+  display: flex;
+  /* or inline-flex */
+  justify-content: space-between;
 }
 
-.item-header{
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
+.item-header {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
 }
 
-.phase-text{
-    font-size: 40px;
-    font-weight: bold;
+.phase-text {
+  font-size: 40px;
+  font-weight: bold;
 }
 
 
@@ -99,50 +100,52 @@
 }
 
 .button-7 {
-    background-color: blue;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-family: 'Times New Roman', Times, serif;
-   
-    font-weight: 400;
-    line-height: 1.15385;
-    margin: 2;
-    outline: none;
-    padding: 8px 8px;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: baseline;
-    white-space: nowrap;
-  }
-  
-  .button-7:hover,
-  .button-7:focus {
-    background-color: darkblue;
-  }
-  
-  .button-7:focus {
-    box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
-  }
-  
-  .button-7:active {
-    background-color: blue;
-    box-shadow: none;
-  }
+  background-color: blue;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Times New Roman', Times, serif;
 
-  .living-players-buttons{
-    display: flex; /* or inline-flex */
-    justify-content: right;
-  }
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 2;
+  outline: none;
+  padding: 8px 8px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
 
-  .middle-container{
-     text-align: center;/* what */
-  }
+.button-7:hover,
+.button-7:focus {
+  background-color: darkblue;
+}
+
+.button-7:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.button-7:active {
+  background-color: blue;
+  box-shadow: none;
+}
+
+.living-players-buttons {
+  display: flex;
+  /* or inline-flex */
+  justify-content: right;
+}
+
+.middle-container {
+  text-align: center;
+  /* what */
+}

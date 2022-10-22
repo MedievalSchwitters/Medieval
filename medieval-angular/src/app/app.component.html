@@ -12,16 +12,21 @@
         <button *ngIf="!playersAddedByCSV" class="button-7" role="button" (click)="addPlayersByCSV()">
             add players by CSV
         </button>
-        <input type="text" >
+        <div>
+            <input id="player-adder" [(ngModel)]="playersToAddInput" placeholder="Add comma seperated names" />
+        </div>
+        <div>
+            <button class="button-7" (click)="addPlayers()">Add Player(s)</button>
+        </div>
     </div>
     <div class="middle-container">
-        <button  class="button-7 phase-text" *ngIf="paused" (click)="pauseButton()">
+        <button class="button-7 phase-text" *ngIf="paused" (click)="pauseButton()">
             PAUSED
-          </button>
-          <button class="button-7 phase-text" *ngIf="!paused" (click)="pauseButton()">
-           UNPAUSED
-          </button>
-          <app-tree [model]='model'></app-tree> 
+        </button>
+        <button class="button-7 phase-text" *ngIf="!paused" (click)="pauseButton()">
+            UNPAUSED
+        </button>
+        <app-tree [model]='model'></app-tree>
     </div>
 
     <div id="living-people">
@@ -33,6 +38,6 @@
                 {{person.name}}, age: {{person.age}}
             </button>
         </div>
-        
+
     </div>
 </div>

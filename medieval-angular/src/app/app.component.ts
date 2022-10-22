@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Injectable } from '@angular/core';
 import * as go from 'gojs';
 import { Person } from './person';
+import { FormBuilder } from '@angular/forms';
+
 
 
 @Component({
@@ -40,10 +42,8 @@ export class AppComponent {
   protosAnthropos: Person|null = null;
   eligableProgenitors: Person[] = []; //represents the fertile people who have not yet had a child during this pause
   livingPeople: Person[] = [];
-  PersonKey = 1; //assigned to people to uniqely identify them, used in tree
-  
-  // @Input()
-  // model: go.Model = null;
+  personKey = 1; //assigned to people to uniqely identify them, used in tree
+  playersToAddInput: String = "";
 
   //config stuff
   maxAge = 10;
@@ -51,7 +51,7 @@ export class AppComponent {
   adultAge = 3;
   elderlyAge = 7;
   
-  constructor(private http: HttpClient) { }
+  constructor( private http: HttpClient ) { }
 
   addPlayersByCSV(): void{
     console.log("addPlayersByCSV");
@@ -64,7 +64,7 @@ export class AppComponent {
     if (!this.protosAnthropos){
       console.log(player + " created ex nihilo; may they not eat any forbidden fruits...");
       this.people = [];
-      this.protosAnthropos = new Person(this.PersonKey++, player);
+      this.protosAnthropos = new Person(this.personKey++, player);
       this.addNode(this.protosAnthropos.key, this.protosAnthropos.name, 0);
       this.people.push(this.protosAnthropos);
       this.deadPlayers = this.deadPlayers.filter(name => name !== player);
@@ -74,7 +74,7 @@ export class AppComponent {
     }
     if(this.eligableProgenitors.length){
       let progenitor = this.eligableProgenitors.pop();
-      let child = new Person(this.PersonKey++, player);
+      let child = new Person(this.personKey++, player);
       progenitor!.children++;
       console.log(child.name + " has been born to " + progenitor!.name);
       this.people.push(child);
@@ -146,5 +146,9 @@ export class AppComponent {
     this.model.startTransaction();
     this.model.addNodeData({'key': key, 'name': name, 'parent': parentKey, 'color': 'green'})
     this.model.commitTransaction();
+  }
+
+  addPlayers(){
+    this.deadPlayers.concat(this.playersToAddInput.split(","))
   }
 }
