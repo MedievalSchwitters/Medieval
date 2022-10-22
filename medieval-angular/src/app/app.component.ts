@@ -40,7 +40,7 @@ export class AppComponent {
   protosAnthropos: Person|null = null;
   eligableProgenitors: Person[] = []; //represents the fertile people who have not yet had a child during this pause
   livingPeople: Person[] = [];
-  PersonKey = 0; //assigned to people to uniqely identify them, used in tree
+  PersonKey = 1; //assigned to people to uniqely identify them, used in tree
   
   // @Input()
   // model: go.Model = null;
@@ -75,7 +75,7 @@ export class AppComponent {
     if(this.eligableProgenitors.length){
       let progenitor = this.eligableProgenitors.pop();
       let child = new Person(this.PersonKey++, player);
-      progenitor!.children.push(child);
+      progenitor!.children++;
       console.log(child.name + " has been born to " + progenitor!.name);
       this.people.push(child);
       this.livingPeople.push(child);
@@ -94,6 +94,10 @@ export class AppComponent {
     let person = this.getPersonByName(player);
     if(person){
       person.alive = false;
+      const node = this.model.findNodeDataForKey(person.key);
+      this.model.startTransaction();
+      this.model.set(node!, 'color', "red");
+      this.model.commitTransaction();
     }
     this.livingPeople = this.livingPeople.filter(person => person.name !== player);
   }
@@ -101,7 +105,7 @@ export class AppComponent {
   updateFerility(){
     this.people.forEach(person => {
       if (this.adultAge <= person.age && person.age < this.elderlyAge && 
-        person.alive && person.children.length <= this.maxNumChildren){
+        person.alive && person.children <= this.maxNumChildren){
         person.fertile = true;
       } else {
         person.fertile = false;
@@ -140,7 +144,7 @@ export class AppComponent {
 
   addNode(key: number, name: string, parentKey: number){
     this.model.startTransaction();
-    this.model.addNodeData({'key': key, 'name': name, 'parent': parentKey})
+    this.model.addNodeData({'key': key, 'name': name, 'parent': parentKey, 'color': 'green'})
     this.model.commitTransaction();
   }
 }

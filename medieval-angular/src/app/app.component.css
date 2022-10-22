@@ -7,16 +7,19 @@
 
 .item-header{
     text-align: center;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .phase-text{
     font-size: 40px;
+    font-weight: bold;
 }
 
 
 /* CSS */
 .button-7-alive {
-  background-color: greenyellow;
+  background-color: green;
   border: 1px solid transparent;
   border-radius: 3px;
   box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
@@ -25,7 +28,7 @@
   cursor: pointer;
   display: inline-block;
   font-family: 'Times New Roman', Times, serif;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 400;
   line-height: 1.15385;
   margin: 2;
@@ -43,7 +46,7 @@
 
 .button-7-alive:hover,
 .button-7:focus {
-  background-color: crimson;
+  background-color: red;
 }
 
 .button-7-alive:focus {
@@ -56,7 +59,7 @@
 }
 
 .button-7-dead {
-  background-color: crimson;
+  background-color: red;
   border: 1px solid transparent;
   border-radius: 3px;
   box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
@@ -65,7 +68,7 @@
   cursor: pointer;
   display: inline-block;
   font-family: 'Times New Roman', Times, serif;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 400;
   line-height: 1.15385;
   margin: 2;
@@ -133,4 +136,13 @@
   .button-7:active {
     background-color: blue;
     box-shadow: none;
+  }
+
+  .living-players-buttons{
+    display: flex; /* or inline-flex */
+    justify-content: right;
+  }
+
+  .middle-container{
+     text-align: center;/* what */
   }

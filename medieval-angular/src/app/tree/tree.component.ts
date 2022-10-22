@@ -53,12 +53,13 @@ export class TreeComponent {
         // bind the Part.layerName to control the Node's layer depending on whether it isSelected
         new go.Binding('layerName', 'isSelected', function (sel) { return sel ? 'Foreground' : ''; }).ofObject(),
         // define the node's outer shape
-        $(go.Shape, 'Rectangle',
+        $(go.Shape, 'RoundedRectangle',
           {
             name: 'SHAPE', fill: 'green', stroke: null,
             // set the port properties:
-            portId: '', fromLinkable: true, toLinkable: true, cursor: 'pointer'
+            //portId: '', fromLinkable: true, toLinkable: true, cursor: 'pointer'
           },
+          new go.Binding("fill", "color")
           // new go.Binding('fill', '', function (node) {
           //   // modify the fill based on the tree depth level
           //   const levelColors = ['#AC193D', '#2672EC', '#8C0095', '#5133AB',
@@ -96,10 +97,10 @@ export class TreeComponent {
               defaultAlignment: go.Spot.Left
             },
             $(go.RowColumnDefinition, { column: 2, width: 4 }),
-            $(go.TextBlock, { font: '9pt  Segoe UI,sans-serif', stroke: 'white' },  // the name
+            $(go.TextBlock, { font: 'bold 17pt serif', stroke: 'white' },  // the name
               {
                 row: 0, column: 0, columnSpan: 5,
-                font: '12pt Segoe UI,sans-serif',
+                font: 'bold 17pt serif',
                 editable: false, isMultiline: false,
                 minSize: new go.Size(10, 16)
               },

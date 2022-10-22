@@ -12,8 +12,9 @@
         <button *ngIf="!playersAddedByCSV" class="button-7" role="button" (click)="addPlayersByCSV()">
             add players by CSV
         </button>
+        <input type="text" >
     </div>
-    <div>
+    <div class="middle-container">
         <button  class="button-7 phase-text" *ngIf="paused" (click)="pauseButton()">
             PAUSED
           </button>
@@ -27,10 +28,11 @@
         <div class="living-players" class="item-header">
             Living Players List:
         </div>
-        <div *ngFor="let person of livingPeople">
+        <div *ngFor="let person of livingPeople" class="living-players-buttons">
             <button class="button-7-alive" role="button" (click)="killPlayer(person.name)">
                 {{person.name}}, age: {{person.age}}
             </button>
         </div>
+        
     </div>
 </div>

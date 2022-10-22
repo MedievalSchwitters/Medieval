@@ -2,7 +2,7 @@ export class Person {
     key: number
     name: string;
     alive = true;
-    children: Person[] = [];
+    children: number = 0;
     age: number;
     fertile:boolean;
 
