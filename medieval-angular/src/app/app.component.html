@@ -1,3 +1,36 @@
 <title>Medieval</title>
-<app-players-list></app-players-list>
-<app-tree></app-tree>
+<div id="players" class="players-container">
+    <div>
+        <div item-header class="item-header">
+            Dead Players List:
+        </div>
+        <div *ngFor="let player of deadPlayers">
+            <button class="button-7-dead" role="button" (click)="alivifyPlayer(player)">
+                {{player}}
+            </button>
+        </div>
+        <button *ngIf="!playersAddedByCSV" class="button-7" role="button" (click)="addPlayersByCSV()">
+            add players by CSV
+        </button>
+    </div>
+    <div>
+        <button  class="button-7 phase-text" *ngIf="paused" (click)="pauseButton()">
+            PAUSED
+          </button>
+          <button class="button-7 phase-text" *ngIf="!paused" (click)="pauseButton()">
+           UNPAUSED
+          </button>
+          <app-tree [model]='model'></app-tree> 
+    </div>
+
+    <div id="living-people">
+        <div class="living-players" class="item-header">
+            Living Players List:
+        </div>
+        <div *ngFor="let person of livingPeople">
+            <button class="button-7-alive" role="button" (click)="killPlayer(person.name)">
+                {{person.name}}, age: {{person.age}}
+            </button>
+        </div>
+    </div>
+</div>
