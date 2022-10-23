@@ -20,11 +20,14 @@
         </div>
     </div>
     <div class="middle-container">
-        <button class="button-7 phase-text" *ngIf="paused" (click)="pauseButton()">
-            PAUSED
+        <button class="button-7 phase-text" *ngIf="!protosAnthropos" (click)="pauseButton()">
+            CREATE FIRST PERSON
         </button>
-        <button class="button-7 phase-text" *ngIf="!paused" (click)="pauseButton()">
-            UNPAUSED
+        <button class="button-7 phase-text" *ngIf="paused && protosAnthropos" (click)="pauseButton()">
+            RESUME
+        </button>
+        <button class="button-7 phase-text" *ngIf="!paused && protosAnthropos" (click)="pauseButton()">
+            PAUSE
         </button>
         <app-tree [model]='model'></app-tree>
     </div>

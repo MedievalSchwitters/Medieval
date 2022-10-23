@@ -97,10 +97,10 @@ export class TreeComponent {
               defaultAlignment: go.Spot.Left
             },
             $(go.RowColumnDefinition, { column: 2, width: 4 }),
-            $(go.TextBlock, { font: 'bold 17pt serif', stroke: 'white' },  // the name
+            $(go.TextBlock, { font: 'bold 17pt arial', stroke: 'white' },  // the name
               {
                 row: 0, column: 0, columnSpan: 5,
-                font: 'bold 17pt serif',
+                font: 'bold 17pt arial',
                 editable: false, isMultiline: false,
                 minSize: new go.Size(10, 16)
               },
