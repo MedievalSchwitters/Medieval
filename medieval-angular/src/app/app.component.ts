@@ -3,6 +3,7 @@ import { Component, Injectable } from '@angular/core';
 import * as go from 'gojs';
 import { Person } from './person';
 import { FormBuilder } from '@angular/forms';
+import { MessageService } from './message.service';
 
 
 
@@ -51,10 +52,9 @@ export class AppComponent {
   adultAge = 3;
   elderlyAge = 7;
   
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient, private messages: MessageService ) { }
 
   addPlayersByCSV(): void{
-    console.log("addPlayersByCSV");
     this.http.get('assets/player_list.csv', {responseType: 'text'}) //apparently JSON expected by defauly, so hardcode response type
     .subscribe(data => this.deadPlayers = data.split(','));
     this.playersAddedByCSV = true;
@@ -62,7 +62,7 @@ export class AppComponent {
 
   alivifyPlayer(player: string): void{
     if (!this.protosAnthropos){
-      console.log(player + " created ex nihilo; may they not eat any forbidden fruits...");
+      this.messages.add(player + " created ex nihilo; may they not eat any forbidden fruits...");
       this.people = [];
       this.protosAnthropos = new Person(this.personKey++, player);
       this.addNode(this.protosAnthropos.key, this.protosAnthropos.name, 0);
@@ -76,7 +76,7 @@ export class AppComponent {
       let progenitor = this.eligableProgenitors.pop();
       let child = new Person(this.personKey++, player);
       progenitor!.children++;
-      console.log(child.name + " has been born to " + progenitor!.name);
+      this.messages.add(child.name + " has been born to " + progenitor!.name);
       this.people.push(child);
       this.livingPeople.push(child);
       this.deadPlayers = this.deadPlayers.filter(name => name !== player);
@@ -84,7 +84,7 @@ export class AppComponent {
       this.addNode(child.key, child.name, progenitor!.key);
     }
     else{
-      console.log("no more eligable progenitors this round");
+      this.messages.add("no more eligable progenitors this round");
     }
   }
 
@@ -118,6 +118,13 @@ export class AppComponent {
       this.paused = !this.paused;
     }
     else{
+      this.messages.clear();
+      this.livingPeople.forEach(person => {
+        if(person.age > this.maxAge){
+          this.messages.add(person.name + "'s time has come. Kill them to proceed.")
+          return;
+        }
+      });
       this.people.forEach(person => {
         person.age++;
       });

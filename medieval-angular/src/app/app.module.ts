@@ -7,13 +7,15 @@ import {HttpClientModule} from '@angular/common/http';
 import { TreeComponent } from './tree/tree.component';
 import { GojsAngularModule } from 'gojs-angular';
 import { FormsModule } from '@angular/forms';
+import { MessagesComponent } from './messages/messages.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TreeComponent
+    TreeComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
