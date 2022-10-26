@@ -9,7 +9,8 @@
                 {{player}}
             </button>
         </div>
-        <button *ngIf="!playersAddedByCSV" class="button-7" role="button" (click)="addPlayersByCSV()">
+        <button *ngIf="!playersAddedByCSV && !protosAnthropos" class="button-7" role="button"
+            (click)="addPlayersByCSV()">
             add players by CSV
         </button>
         <div>
@@ -30,7 +31,17 @@
             PAUSE
         </button>
         <app-tree [model]='model'></app-tree>
-        <app-messages></app-messages>
+        <div class="chronicle-and-config">
+            <app-messages></app-messages>
+            <div>
+                <h2>config:</h2>
+                <div class="configs">
+                    Max number of children: {{maxNumChildren}} | Adult age: {{adultAge}} | Elderly age: {{elderlyAge}} | Max age: {{maxAge}}
+                </div>
+                <input [(ngModel)]="configInput" placeholder="Add comma seperated values">
+                <button class="button-7" (click)="configSet()">Update config</button>
+            </div>
+        </div>
     </div>
 
     <div id="living-people">

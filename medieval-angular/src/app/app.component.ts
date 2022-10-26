@@ -45,6 +45,7 @@ export class AppComponent {
   livingPeople: Person[] = [];
   personKey = 1; //assigned to people to uniqely identify them, used in tree
   playersToAddInput: String = "";
+  configInput = "";
 
   //config stuff
   maxAge = 10;
@@ -105,7 +106,7 @@ export class AppComponent {
   updateFerility(){
     this.people.forEach(person => {
       if (this.adultAge <= person.age && person.age < this.elderlyAge && 
-        person.alive && person.children <= this.maxNumChildren){
+        person.alive && person.children < this.maxNumChildren){
         person.fertile = true;
       } else {
         person.fertile = false;
@@ -118,13 +119,14 @@ export class AppComponent {
       this.paused = !this.paused;
     }
     else{
-      this.messages.clear();
-      this.livingPeople.forEach(person => {
+      //this.messages.clear();
+      for (let index = 0; index < this.livingPeople.length; index++) {
+        const person = this.livingPeople[index];
         if(person.age > this.maxAge){
           this.messages.add(person.name + "'s time has come. Kill them to proceed.")
           return;
         }
-      });
+      };
       this.people.forEach(person => {
         person.age++;
       });
@@ -167,5 +169,17 @@ export class AppComponent {
       }
     }
     this.playersToAddInput = "";
+  }
+
+  configSet(){
+    if(!this.configInput){
+      return;
+    }
+    const newConfigStrings = this.configInput.split(',');
+    this.configInput = "";
+    this.maxNumChildren = parseInt(newConfigStrings[0]);
+    this.adultAge = parseInt(newConfigStrings[1]);
+    this.elderlyAge = parseInt(newConfigStrings[2]);
+    this.maxAge = parseInt(newConfigStrings[3]);
   }
 }
