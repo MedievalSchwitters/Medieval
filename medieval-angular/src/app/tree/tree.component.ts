@@ -32,13 +32,13 @@ export class TreeComponent {
               treeStyle: go.TreeLayout.StyleLastParents,
               arrangement: go.TreeLayout.ArrangementHorizontal,
               // properties for most of the tree:
-              angle: 90,
+              //angle: 90,
               layerSpacing: 35,
               // properties for the "last parents":
-              alternateAngle: 90,
-              alternateLayerSpacing: 35,
-              alternateAlignment: go.TreeLayout.AlignmentBus,
-              alternateNodeSpacing: 20
+              // alternateAngle: 90,
+              // alternateLayerSpacing: 35,
+              // alternateAlignment: go.TreeLayout.AlignmentBus,
+              // alternateNodeSpacing: 20
             }),
         'undoManager.isEnabled': true
       }
