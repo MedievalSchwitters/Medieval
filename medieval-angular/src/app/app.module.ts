@@ -8,6 +8,7 @@ import { TreeComponent } from './tree/tree.component';
 import { GojsAngularModule } from 'gojs-angular';
 import { FormsModule } from '@angular/forms';
 import { MessagesComponent } from './messages/messages.component';
+import {ButtonModule} from 'primeng/button';
 
 
 
@@ -22,7 +23,8 @@ import { MessagesComponent } from './messages/messages.component';
     AppRoutingModule,
     HttpClientModule,
     GojsAngularModule,
-    FormsModule
+    FormsModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Injectable } from '@angular/core';
 import * as go from 'gojs';
 import { Person } from './person';
-import { FormBuilder } from '@angular/forms';
 import { MessageService } from './message.service';
+import {ButtonModule} from 'primeng/button';
 
 
 

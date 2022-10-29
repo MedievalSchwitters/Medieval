@@ -5,7 +5,7 @@
             Dead Players List:
         </div>
         <div *ngFor="let player of deadPlayers">
-            <button class="button-7-dead" role="button" (click)="alivifyPlayer(player)">
+            <button pButton class="p-button-danger" (click)="alivifyPlayer(player)">
                 {{player}}
             </button>
         </div>

@@ -21,6 +21,8 @@
     "gojs": "^2.2.16",
     "gojs-angular": "^2.0.6",
     "jquery-csv": "^1.0.21",
+    "primeicons": "^6.0.1",
+    "primeng": "^14.1.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
