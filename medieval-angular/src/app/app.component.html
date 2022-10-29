@@ -14,13 +14,13 @@
     </div>
     <div class="middle-container">
         <app-tree [model]='model'></app-tree>
-        <button class="button-7 phase-text" *ngIf="!protosAnthropos" (click)="pauseButton()">
+        <button pButton *ngIf="!protosAnthropos" (click)="pauseButton()">
             CREATE FIRST PERSON
         </button>
-        <button class="button-7 phase-text" *ngIf="paused && protosAnthropos" (click)="pauseButton()">
+        <button pButton *ngIf="paused && protosAnthropos" (click)="pauseButton()">
             RESUME
         </button>
-        <button class="button-7 phase-text" *ngIf="!paused && protosAnthropos" (click)="pauseButton()">
+        <button pButton *ngIf="!paused && protosAnthropos" (click)="pauseButton()">
             PAUSE
         </button>
         
@@ -32,13 +32,12 @@
                     Max number of children: {{maxNumChildren}} | Adult age: {{adultAge}} | Elderly age: {{elderlyAge}} | Max age: {{maxAge}}
                 </div>
                 <input [(ngModel)]="configInput" placeholder="Add comma seperated values">
-                <button class="button-7" (click)="configSet()">Update config</button>
+                <button pButton (click)="configSet()">Update config</button>
                 <div>
                     <input id="player-adder" [(ngModel)]="playersToAddInput" placeholder="Add comma seperated names" />
-                    <button class="button-7" (click)="addPlayers()">Add Player(s)</button>
+                    <button pButton (click)="addPlayers()">Add Player(s)</button>
                 </div>
-                <button *ngIf="!playersAddedByCSV && !protosAnthropos" class="button-7" role="button"
-                (click)="addPlayersByCSV()">
+                <button pButton *ngIf="!playersAddedByCSV && !protosAnthropos" (click)="addPlayersByCSV()">
                 add players by CSV
             </button>
             </div>
@@ -50,7 +49,7 @@
             Living Players List:
         </div>
         <div *ngFor="let person of livingPeople" class="living-players-buttons">
-            <button class="button-7-alive" role="button" (click)="killPlayer(person.name)">
+            <button pButton class="p-button-success" (click)="killPlayer(person.name)">
                 {{person.name}}, age: {{person.age}}
             </button>
         </div>
