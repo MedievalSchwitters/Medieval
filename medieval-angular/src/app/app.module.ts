@@ -9,6 +9,8 @@ import { GojsAngularModule } from 'gojs-angular';
 import { FormsModule } from '@angular/forms';
 import { MessagesComponent } from './messages/messages.component';
 import {ButtonModule} from 'primeng/button';
+import {InputTextModule} from 'primeng/inputtext';
+import { ConfigComponent } from './config/config.component';
 
 
 
@@ -16,7 +18,8 @@ import {ButtonModule} from 'primeng/button';
   declarations: [
     AppComponent,
     TreeComponent,
-    MessagesComponent
+    MessagesComponent,
+    ConfigComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import {ButtonModule} from 'primeng/button';
     HttpClientModule,
     GojsAngularModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]

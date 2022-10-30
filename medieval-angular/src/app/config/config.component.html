@@ -1,0 +1,11 @@
+<div>
+    <div class="configs">
+        Max # children: {{maxNumChildren}} | Adult age: {{adultAge}} | Elderly age: {{elderlyAge}} |
+        Max age: {{maxAge}}
+    </div>
+    <span class="p-float-label" style="display: flex;">
+        <input id="float-input" type="text" pInputText [(ngModel)]="playersToAddInput">
+        <label for="float-input">Players</label>
+        <button pButton (click)="addPlayers()">Add Player(s)</button>
+    </span>
+</div>

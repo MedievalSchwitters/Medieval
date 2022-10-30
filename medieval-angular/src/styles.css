@@ -2104,17 +2104,17 @@
     border: 1px solid white;
   }
   .p-button.p-button-success:enabled:hover, .p-buttonset.p-button-success > .p-button:enabled:hover, .p-splitbutton.p-button-success > .p-button:enabled:hover {
-    background: #b2d788;
-    color: #121212;
-    border-color: #b2d788;
+    background: var(--green-600);
+    color: white;
+    border-color: var(--green-600);
   }
   .p-button.p-button-success:enabled:focus, .p-buttonset.p-button-success > .p-button:enabled:focus, .p-splitbutton.p-button-success > .p-button:enabled:focus {
-    box-shadow: 0 0 0 1px #d6eac0;
+    box-shadow: 0 0 0 1px white;
   }
   .p-button.p-button-success:enabled:active, .p-buttonset.p-button-success > .p-button:enabled:active, .p-splitbutton.p-button-success > .p-button:enabled:active {
-    background: #9fce6b;
-    color: #121212;
-    border-color: #9fce6b;
+    background: red;
+    color: white;
+    border-color: white;
   }
   .p-button.p-button-success.p-button-outlined, .p-buttonset.p-button-success > .p-button.p-button-outlined, .p-splitbutton.p-button-success > .p-button.p-button-outlined {
     background-color: transparent;

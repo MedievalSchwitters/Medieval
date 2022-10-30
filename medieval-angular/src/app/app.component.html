@@ -2,7 +2,7 @@
 <div id="players" class="players-container">
     <div>
         <div item-header class="item-header">
-            Dead Players List:
+            Dead Players:
         </div>
         <div *ngFor="let player of deadPlayers">
             <button pButton class="p-button-danger" (click)="alivifyPlayer(player)">
@@ -10,7 +10,7 @@
             </button>
         </div>
 
-        
+
     </div>
     <div class="middle-container">
         <app-tree [model]='model'></app-tree>
@@ -23,30 +23,18 @@
         <button pButton *ngIf="!paused && protosAnthropos" (click)="pauseButton()">
             PAUSE
         </button>
-        
+
         <div class="chronicle-and-config">
+            <app-config [maxAge]="maxAge" [maxNumChildren]="maxNumChildren" [adultAge]="adultAge"
+                [elderlyAge]="elderlyAge" [playersToAddInput]="playersToAddInput" [deadPlayers]="deadPlayers"
+                [livingPlayers]="livingPlayers"></app-config>
             <app-messages></app-messages>
-            <div>
-                <h2>config:</h2>
-                <div class="configs">
-                    Max number of children: {{maxNumChildren}} | Adult age: {{adultAge}} | Elderly age: {{elderlyAge}} | Max age: {{maxAge}}
-                </div>
-                <input [(ngModel)]="configInput" placeholder="Add comma seperated values">
-                <button pButton (click)="configSet()">Update config</button>
-                <div>
-                    <input id="player-adder" [(ngModel)]="playersToAddInput" placeholder="Add comma seperated names" />
-                    <button pButton (click)="addPlayers()">Add Player(s)</button>
-                </div>
-                <button pButton *ngIf="!playersAddedByCSV && !protosAnthropos" (click)="addPlayersByCSV()">
-                add players by CSV
-            </button>
-            </div>
         </div>
     </div>
 
     <div id="living-people">
         <div class="living-players" class="item-header">
-            Living Players List:
+            Living Players:
         </div>
         <div *ngFor="let person of livingPeople" class="living-players-buttons">
             <button pButton class="p-button-success" (click)="killPlayer(person.name)">

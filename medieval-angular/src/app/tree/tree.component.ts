@@ -55,7 +55,7 @@ export class TreeComponent {
         // define the node's outer shape
         $(go.Shape, 'RoundedRectangle',
           {
-            name: 'SHAPE', fill: 'green', stroke: null,
+            name: 'SHAPE', fill: 'green', stroke: 'white',
             // set the port properties:
             //portId: '', fromLinkable: true, toLinkable: true, cursor: 'pointer'
           },

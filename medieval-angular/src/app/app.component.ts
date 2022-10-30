@@ -3,7 +3,6 @@ import { Component, Injectable } from '@angular/core';
 import * as go from 'gojs';
 import { Person } from './person';
 import { MessageService } from './message.service';
-import {ButtonModule} from 'primeng/button';
 
 
 
@@ -45,7 +44,6 @@ export class AppComponent {
   livingPeople: Person[] = [];
   personKey = 1; //assigned to people to uniqely identify them, used in tree
   playersToAddInput: String = "";
-  configInput = "";
 
   //config stuff
   maxAge = 10;
@@ -122,7 +120,7 @@ export class AppComponent {
       //this.messages.clear();
       for (let index = 0; index < this.livingPeople.length; index++) {
         const person = this.livingPeople[index];
-        if(person.age > this.maxAge){
+        if(person.age >= this.maxAge){
           this.messages.add(person.name + "'s time has come. Kill them to proceed.")
           return;
         }
@@ -171,15 +169,4 @@ export class AppComponent {
     this.playersToAddInput = "";
   }
 
-  configSet(){
-    if(!this.configInput){
-      return;
-    }
-    const newConfigStrings = this.configInput.split(',');
-    this.configInput = "";
-    this.maxNumChildren = parseInt(newConfigStrings[0]);
-    this.adultAge = parseInt(newConfigStrings[1]);
-    this.elderlyAge = parseInt(newConfigStrings[2]);
-    this.maxAge = parseInt(newConfigStrings[3]);
-  }
 }

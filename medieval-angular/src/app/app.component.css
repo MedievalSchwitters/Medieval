@@ -148,6 +148,7 @@
 
 .middle-container {
   text-align: center;
+  width: -webkit-fill-available;
   /* what */
 }
 
