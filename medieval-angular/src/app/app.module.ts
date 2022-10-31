@@ -11,7 +11,7 @@ import { MessagesComponent } from './messages/messages.component';
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import { ConfigComponent } from './config/config.component';
-
+import {InputNumberModule} from 'primeng/inputnumber';
 
 
 @NgModule({
@@ -28,7 +28,8 @@ import { ConfigComponent } from './config/config.component';
     GojsAngularModule,
     FormsModule,
     ButtonModule,
-    InputTextModule
+    InputTextModule,
+    InputNumberModule
   ],
   providers: [],
   bootstrap: [AppComponent]
