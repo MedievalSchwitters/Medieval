@@ -12,6 +12,7 @@ import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import { ConfigComponent } from './config/config.component';
 import {InputNumberModule} from 'primeng/inputnumber';
+import {CardModule} from 'primeng/card';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {InputNumberModule} from 'primeng/inputnumber';
     FormsModule,
     ButtonModule,
     InputTextModule,
-    InputNumberModule
+    InputNumberModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

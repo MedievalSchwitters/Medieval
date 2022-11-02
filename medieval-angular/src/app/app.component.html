@@ -1,48 +1,46 @@
 <title>Medieval</title>
 <div id="players" class="players-container">
-    <div>
-        <div item-header class="item-header">
-            Dead Players:
-        </div>
+    <p-card header="Dead Players" [style]="{'margin-right': '5px', 'width': '100%'}">
         <div *ngFor="let player of deadPlayers">
             <button pButton class="p-button-danger" (click)="alivifyPlayer(player)">
                 {{player}}
             </button>
         </div>
-
-
-    </div>
+    </p-card>
     <div class="middle-container">
         <app-tree [model]='model'></app-tree>
-        <button pButton *ngIf="!protosAnthropos" (click)="pauseButton()">
-            CREATE FIRST PERSON
-        </button>
-        <button pButton *ngIf="paused && protosAnthropos" (click)="pauseButton()">
-            RESUME
-        </button>
-        <button pButton *ngIf="!paused && protosAnthropos" (click)="pauseButton()">
-            PAUSE
-        </button>
 
         <div class="chronicle-and-config">
             <app-config [maxAge]="maxAge" [maxNumChildren]="maxNumChildren" [adultAge]="adultAge"
                 [elderlyAge]="elderlyAge" [playersToAddInput]="playersToAddInput" [deadPlayers]="deadPlayers"
                 [livingPlayers]="livingPlayers"></app-config>
-            <app-messages></app-messages>
+            <p-card header="Chronicle"
+                [style]="{'width': '28rem', 'height': '17.5rem', 'margin-top': '5px', 'position': 'relative'}">
+                <app-messages></app-messages>
+                <div style="display: flex; justify-content:center;">
+                    <button pButton *ngIf="!protosAnthropos" (click)="pauseButton()"
+                        class="iterate-button">
+                        CREATE FIRST PERSON
+                    </button>
+                    <button pButton *ngIf="paused && protosAnthropos" (click)="pauseButton()" class="iterate-button">
+                        RESUME
+                    </button>
+                    <button pButton *ngIf="!paused && protosAnthropos" (click)="pauseButton()" class="iterate-button">
+                        PAUSE
+                    </button>
+                </div>
+            </p-card>
         </div>
     </div>
 
-    <div id="living-people">
-        <div class="living-players" class="item-header">
-            Living Players:
-        </div>
+    <p-card header="Living Players" [style]="{'margin-left': '5px', 'width': 'max-content'}">
         <div *ngFor="let person of livingPeople" class="living-players-buttons">
             <button pButton class="p-button-success" (click)="killPlayer(person.name)">
                 {{person.name}}, age: {{person.age}}
             </button>
         </div>
 
-    </div>
+    </p-card>
 </div>
 <button pButton *ngIf="!playersAddedByCSV && !protosAnthropos" (click)="addPlayersByCSV()">
     add players by CSV

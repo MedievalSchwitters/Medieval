@@ -1,8 +1,8 @@
-<div>
+<p-card header="Config" [style]="{'width': '28rem', 'height': '17.5rem', 'margin-right': '5px', 'margin-top': '5px'}">
     <div class="inputs-flex">
         <span class="field col-12 md:col-3" >
             <label for="vertical" style="display: block">Max Kids</label>
-            <p-inputNumber [style]="{'width':'4rem'}" [inputStyle]="{'width':'8rem'}" [(ngModel)]="maxNumChildren" [showButtons]="false" buttonLayout="horizontal"
+            <p-inputNumber [style]="{'width':'8rem'}" [inputStyle]="{'width':'8rem'}" [(ngModel)]="maxNumChildren" [showButtons]="false" buttonLayout="horizontal"
                 spinnerMode="vertical" decrementButtonClass="p-button-secondary"
                 incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus"
                 decrementButtonIcon="pi pi-minus" >
@@ -10,7 +10,7 @@
         </span>
         <span class="field col-12 md:col-3" >
             <label for="vertical" style="display: block">Adult Age</label>
-            <p-inputNumber [style]="{'width':'4rem'}" [inputStyle]="{'width':'8rem'}" [(ngModel)]="adultAge" [showButtons]="false" buttonLayout="horizontal" spinnerMode="horizonatl"
+            <p-inputNumber [style]="{'width':'8rem'}" [inputStyle]="{'width':'8rem'}" [(ngModel)]="adultAge" [showButtons]="false" buttonLayout="horizontal" spinnerMode="horizonatl"
                 decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary"
                 incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
             </p-inputNumber>
@@ -19,7 +19,7 @@
     <div class="inputs-flex">
         <span class="field col-12 md:col-3" >
             <label for="vertical" style="display: block">Old Age</label>
-            <p-inputNumber [style]="{'width':'4rem'}" [inputStyle]="{'width':'8rem'}" [(ngModel)]="elderlyAge" [showButtons]="false" buttonLayout="horizontal"
+            <p-inputNumber [style]="{'width':'8rem'}" [inputStyle]="{'width':'8rem'}" [(ngModel)]="elderlyAge" [showButtons]="false" buttonLayout="horizontal"
                 spinnerMode="vertical" decrementButtonClass="p-button-secondary"
                 incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus"
                 decrementButtonIcon="pi pi-minus" >
@@ -27,7 +27,7 @@
         </span>
         <span class="field col-12 md:col-3" >
             <label for="vertical" style="display: block">Max Age</label>
-            <p-inputNumber [style]="{'width':'4rem'}" [inputStyle]="{'width':'8rem'}" [(ngModel)]="maxAge" [showButtons]="false" buttonLayout="horizontal" spinnerMode="horizonatl"
+            <p-inputNumber [style]="{'width':'8rem'}" [inputStyle]="{'width':'8rem'}" [(ngModel)]="maxAge" [showButtons]="false" buttonLayout="horizontal" spinnerMode="horizonatl"
                 decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary"
                 incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
             </p-inputNumber>
@@ -38,4 +38,4 @@
         <label for="float-input">Player Name(s)</label>
         <button pButton (click)="addPlayers()">Add Player(s)</button>
     </span>
-</div>
+</p-card>
