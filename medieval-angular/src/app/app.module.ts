@@ -31,7 +31,7 @@ import {CardModule} from 'primeng/card';
     ButtonModule,
     InputTextModule,
     InputNumberModule,
-    CardModule
+    CardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,4 @@
 @import url(//db.onlinewebfonts.com/c/f3258385782c4c96aa24fe8b5d5f9782?family=Old+English+Text+MT);
-
 .players-container {
   display: flex;
   /* or inline-flex */
@@ -148,14 +147,13 @@
 
 .middle-container {
   text-align: center;
-  width: fit-content; 
+  width: -webkit-fill-available;
   /* what */
 }
 
 .chronicle-and-config {
   display: flex;
-  /* or inline-flex */
-  justify-content: center;
+  
 }
 
 /* MessagesComponent's private CSS styles */

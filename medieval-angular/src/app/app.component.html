@@ -1,6 +1,6 @@
 <title>Medieval</title>
 <div id="players" class="players-container">
-    <p-card header="Dead Players" [style]="{'margin-right': '5px', 'width': '100%'}">
+    <p-card header="Dead Players" [style]="{'min-width': '15rem'}">
         <div *ngFor="let player of deadPlayers">
             <button pButton class="p-button-danger" (click)="alivifyPlayer(player)">
                 {{player}}
@@ -11,29 +11,34 @@
         <app-tree [model]='model'></app-tree>
 
         <div class="chronicle-and-config">
-            <app-config [maxAge]="maxAge" [maxNumChildren]="maxNumChildren" [adultAge]="adultAge"
-                [elderlyAge]="elderlyAge" [playersToAddInput]="playersToAddInput" [deadPlayers]="deadPlayers"
-                [livingPlayers]="livingPlayers"></app-config>
-            <p-card header="Chronicle"
-                [style]="{'width': '28rem', 'height': '17.5rem', 'margin-top': '5px', 'position': 'relative'}">
-                <app-messages></app-messages>
-                <div style="display: flex; justify-content:center;">
-                    <button pButton *ngIf="!protosAnthropos" (click)="pauseButton()"
-                        class="iterate-button">
-                        CREATE FIRST PERSON
-                    </button>
-                    <button pButton *ngIf="paused && protosAnthropos" (click)="pauseButton()" class="iterate-button">
-                        RESUME
-                    </button>
-                    <button pButton *ngIf="!paused && protosAnthropos" (click)="pauseButton()" class="iterate-button">
-                        PAUSE
-                    </button>
-                </div>
-            </p-card>
+            <div style="width: 50%; height: 100%; margin: 10px;">
+                <app-config [maxAge]="maxAge" [maxNumChildren]="maxNumChildren" [adultAge]="adultAge"
+                    [elderlyAge]="elderlyAge" [playersToAddInput]="playersToAddInput" [deadPlayers]="deadPlayers"
+                    [livingPlayers]="livingPlayers"></app-config>
+            </div>
+            <div style="width: 50%; height: 100%; margin-top: 10px;">
+                <p-card header="Chronicle"
+                    [style]="{'position': 'relative'}">
+                    <app-messages></app-messages>
+                    <div style="display: flex; justify-content:center;">
+                        <button pButton *ngIf="!protosAnthropos" (click)="pauseButton()" class="iterate-button">
+                            CREATE FIRST PERSON
+                        </button>
+                        <button pButton *ngIf="paused && protosAnthropos" (click)="pauseButton()"
+                            class="iterate-button">
+                            RESUME
+                        </button>
+                        <button pButton *ngIf="!paused && protosAnthropos" (click)="pauseButton()"
+                            class="iterate-button">
+                            PAUSE
+                        </button>
+                    </div>
+                </p-card>
+            </div>
         </div>
     </div>
 
-    <p-card header="Living Players" [style]="{'margin-left': '5px', 'width': 'max-content'}">
+    <p-card header="Living Players" [style]="{'margin-left': '5px', 'min-width': '15rem'}">
         <div *ngFor="let person of livingPeople" class="living-players-buttons">
             <button pButton class="p-button-success" (click)="killPlayer(person.name)">
                 {{person.name}}, age: {{person.age}}
