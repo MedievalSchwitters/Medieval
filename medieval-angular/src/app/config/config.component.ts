@@ -32,7 +32,7 @@ export class ConfigComponent implements OnInit {
     const playersToAdd = this.playersToAddInput.split(",");
     for(let i = 0; i < playersToAdd.length; i++){
       playersToAdd[i] = playersToAdd[i].trim();
-      if(!this.deadPlayers.includes(playersToAdd[i]) && !this.livingPlayers.includes(playersToAdd[i])){
+      if(!this.deadPlayers.includes(playersToAdd[i]) && !this.livingPlayers.includes(playersToAdd[i]) && playersToAdd[i].length < 19){
         this.deadPlayers.push(playersToAdd[i]);
       }
     }
