@@ -3,16 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { TreeComponent } from './tree/tree.component';
 import { GojsAngularModule } from 'gojs-angular';
 import { FormsModule } from '@angular/forms';
 import { MessagesComponent } from './messages/messages.component';
-import {ButtonModule} from 'primeng/button';
-import {InputTextModule} from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 import { ConfigComponent } from './config/config.component';
-import {InputNumberModule} from 'primeng/inputnumber';
-import {CardModule} from 'primeng/card';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { CardModule } from 'primeng/card';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import {CardModule} from 'primeng/card';
     ButtonModule,
     InputTextModule,
     InputNumberModule,
-    CardModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, ViewEncapsulation, } from '@angular/core';
 import * as go from 'gojs';
 import { DiagramComponent, PaletteComponent } from 'gojs-angular';
 
@@ -14,7 +14,7 @@ export class TreeComponent {
 
   @ViewChild('myDiagram', { static: true }) public myDiagramComponent: DiagramComponent | null = null;
   @ViewChild('myPalette', { static: true }) public myPaletteComponent: PaletteComponent | null = null;
-
+  @ViewChild("myDiagramDiv") myDiagramDiv: ElementRef | null = null;
   
 
   public diagram!: go.Diagram;
@@ -135,9 +135,12 @@ export class TreeComponent {
       );  // end Node
 
     this.diagram.model = this.model;
+    console.log(this.myDiagramDiv?.nativeElement.children[0].style.width);
   }
 
   
-
+  printEle(){
+    this.diagram.div!.style.width = '400px';
+  }
 }
 
