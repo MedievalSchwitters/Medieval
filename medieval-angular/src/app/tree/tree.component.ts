@@ -140,7 +140,15 @@ export class TreeComponent {
 
   
   printEle(){
-    this.diagram.div!.style.width = '400px';
+    this.diagram!.div!.style.width = "2";
+    this.diagram!.div!.style.width = (this.diagram.div!.parentElement!.clientWidth - 2).toString(); 
+    
+    // setTimeout(() => {
+    //   console.log('1 second finished!');
+      
+    // }, 1000);
+
+    
   }
 }
 
