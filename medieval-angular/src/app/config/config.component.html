@@ -5,14 +5,14 @@
             <p-inputNumber [style]="{'width':'8rem'}" [inputStyle]="{'width':'8rem'}" [(ngModel)]="maxNumChildren" [showButtons]="false" buttonLayout="horizontal"
                 spinnerMode="vertical" decrementButtonClass="p-button-secondary"
                 incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus"
-                decrementButtonIcon="pi pi-minus" >
+                decrementButtonIcon="pi pi-minus" (ngModelChange)="emitMaxNumChildren()">
             </p-inputNumber>
         </span>
         <span class="field col-12 md:col-3" >
             <label for="vertical" style="display: block">Adult Age</label>
             <p-inputNumber [style]="{'width':'8rem'}" [inputStyle]="{'width':'8rem'}" [(ngModel)]="adultAge" [showButtons]="false" buttonLayout="horizontal" spinnerMode="horizonatl"
                 decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary"
-                incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+                incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" (ngModelChange)="emitAdultAge()">
             </p-inputNumber>
         </span>
     </div>
@@ -22,14 +22,14 @@
             <p-inputNumber [style]="{'width':'8rem'}" [inputStyle]="{'width':'8rem'}" [(ngModel)]="elderlyAge" [showButtons]="false" buttonLayout="horizontal"
                 spinnerMode="vertical" decrementButtonClass="p-button-secondary"
                 incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus"
-                decrementButtonIcon="pi pi-minus" >
+                decrementButtonIcon="pi pi-minus" (ngModelChange)="emitElderlyAge()">
             </p-inputNumber>
         </span>
         <span class="field col-12 md:col-3" >
             <label for="vertical" style="display: block">Max Age</label>
             <p-inputNumber [style]="{'width':'8rem'}" [inputStyle]="{'width':'8rem'}" [(ngModel)]="maxAge" [showButtons]="false" buttonLayout="horizontal" spinnerMode="horizonatl"
                 decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary"
-                incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+                incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" (ngModelChange)="emitMaxAge()">
             </p-inputNumber>
         </span>
     </div>

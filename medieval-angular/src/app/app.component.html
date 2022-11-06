@@ -12,26 +12,27 @@
 
         <div class="chronicle-and-config">
             <div style="width: 50%; height: 18rem; margin-top: 10px; margin-right: 10px;">
-                <app-config [maxAge]="maxAge" [maxNumChildren]="maxNumChildren" [adultAge]="adultAge"
-                    [elderlyAge]="elderlyAge" [playersToAddInput]="playersToAddInput" [deadPlayers]="deadPlayers"
-                    [livingPlayers]="livingPlayers"></app-config>
+                <app-config 
+                    (maxAge)="maxAge" (maxAgeEvent)="updateMaxAge($event)" 
+                    (maxNumChildren)="maxNumChildren" (maxNumChildrenEvent)="updateMaxNumChildren($event)" 
+                    (adultAge)="adultAge" (adultAgeEvent)="updateAdultAge($event)"
+                    (elderlyAge)="elderlyAge" (elderlyAgeEvent)="updateElderlyAge($event)" 
+                    [playersToAddInput]="playersToAddInput" 
+                    [deadPlayers]="deadPlayers"
+                    [livingPlayers]="livingPlayers">
+                </app-config>
             </div>
             <div style="width: 50%; height: 18rem; margin-top: 10px;">
                 <p-card header="Chronicle"
                     [style]="{'position': 'relative', 'height':'18rem'} ">
-                    <app-messages></app-messages>
+                    <p-scrollPanel #chroniclePanel  [style]="{width: '100%', height: '150px'}">
+                        <app-messages></app-messages>
+                    </p-scrollPanel>
                     <div style="display: flex; justify-content:center;">
-                        <button pButton *ngIf="!protosAnthropos" (click)="pauseButton()" class="iterate-button">
-                            CREATE FIRST PERSON
+                        <button pButton (click)="nextTurn()" class="iterate-button">
+                            Next Turn
                         </button>
-                        <button pButton *ngIf="paused && protosAnthropos" (click)="pauseButton()"
-                            class="iterate-button">
-                            RESUME
-                        </button>
-                        <button pButton *ngIf="!paused && protosAnthropos" (click)="pauseButton()"
-                            class="iterate-button">
-                            PAUSE
-                        </button>
+                        <button (click)="chroniclePanel.scrollTop(500)">Scroll bottom</button>
                     </div>
                 </p-card>
             </div>
@@ -47,6 +48,7 @@
 
     </p-card>
 </div>
+<p-toast position="bottom-right" key="br"></p-toast>
 <button pButton *ngIf="!playersAddedByCSV && !protosAnthropos" (click)="addPlayersByCSV()">
     add players by CSV
 </button>

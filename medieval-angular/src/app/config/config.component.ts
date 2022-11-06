@@ -9,13 +9,21 @@ export class ConfigComponent implements OnInit {
 
   constructor() { }
 
-  @Input() maxAge: number = 0;
+  @Output() maxAgeEvent = new EventEmitter<number>;
 
-  @Input() maxNumChildren: number = 0;
+  @Input() maxAge: number = 10;
 
-  @Input() adultAge: number = 0;
+  @Output() maxNumChildrenEvent = new EventEmitter<number>;
 
-  @Input() elderlyAge: number = 0;
+  @Input() maxNumChildren: number = 2;
+
+  @Output() adultAgeEvent = new EventEmitter<number>;
+
+  @Input() adultAge: number = 3;
+
+  @Output() elderlyAgeEvent = new EventEmitter<number>;
+
+  @Input() elderlyAge: number = 7;
 
   @Input() playersToAddInput: String = "";
 
@@ -38,4 +46,21 @@ export class ConfigComponent implements OnInit {
     }
     this.playersToAddInput = "";
   }
+
+  emitMaxAge(){
+    this.maxAgeEvent.emit(this.maxAge);
+  }
+
+  emitMaxNumChildren(){
+    this.maxNumChildrenEvent.emit(this.maxNumChildren);
+  }
+
+  emitAdultAge(){
+    this.adultAgeEvent.emit(this.adultAge);
+  }
+
+  emitElderlyAge(){
+    this.elderlyAgeEvent.emit(this.elderlyAge);
+  }
+
 }
