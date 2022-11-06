@@ -135,11 +135,11 @@ export class TreeComponent {
       );  // end Node
 
     this.diagram.model = this.model;
-    console.log(this.myDiagramDiv?.nativeElement.children[0].style.width);
+    this.resizeDiagram();
   }
 
   
-  printEle(){
+  resizeDiagram(){
     this.diagram!.div!.style.width = "2";
     this.diagram!.div!.style.width = (this.diagram.div!.parentElement!.clientWidth - 2).toString(); 
     
