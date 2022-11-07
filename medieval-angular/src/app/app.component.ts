@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, Injectable, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injectable, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import * as go from 'gojs';
 import { Person } from './person';
 import { MessageService as Chronicle } from './message.service';
 import { MessageService } from 'primeng/api';
+import { waitForAsync } from '@angular/core/testing';
 
 
 
@@ -16,7 +17,7 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./app.component.css'],
   providers: [MessageService]
 })
-export class AppComponent {
+export class AppComponent implements OnChanges{
   title = 'medieval-angular';
 
   public model: go.TreeModel = new go.TreeModel([]);
@@ -38,8 +39,7 @@ export class AppComponent {
   maxNumChildren = 2;
   adultAge = 3;
   elderlyAge = 7;
-  @ViewChild("chroniclePanel") chroniclePanel = null;
-
+  @ViewChild("scrollButton") scrollButton: ElementRef | null = null;
   constructor(private http: HttpClient, private chronicle: Chronicle, private messageService: MessageService) { }
 
   addPlayersByCSV(): void {
@@ -50,7 +50,7 @@ export class AppComponent {
 
   alivifyPlayer(player: string): void {
     if (!this.protosAnthropos) {
-      let incarnation = this.getIncarnation(player);
+      let incarnation = this.intToRoman(this.getIncarnation(player)!);
       this.chronicle.add(player + " " + incarnation + " was created ex nihilo.");
       this.people = [];
       this.protosAnthropos = new Person(this.personKey++, player);
@@ -65,8 +65,8 @@ export class AppComponent {
       let progenitor = this.eligableProgenitors.pop();
       let child = new Person(this.personKey++, player);
       progenitor!.children++;
-      let childIncarnation = this.getIncarnation(child.name);
-      let progenitorIncarnation = this.getIncarnation(progenitor!.name);
+      let childIncarnation = this.intToRoman(this.getIncarnation(child.name)!);
+      let progenitorIncarnation = this.intToRoman(this.getIncarnation(progenitor!.name)!);
       this.chronicle.add(child.name + " " + childIncarnation + " was born to " + progenitor!.name + " " + progenitorIncarnation);
       this.people.push(child);
       this.livingPeople.push(child);
@@ -92,7 +92,9 @@ export class AppComponent {
       this.chronicle.add(person.name + " " + this.intToRoman(this.getIncarnation(player)!) + " died at the age of " + person.age);
 
       this.incrementIncarnation(player);
-      this.eligableProgenitors.splice(this.eligableProgenitors.indexOf(person));
+      if (this.eligableProgenitors.includes(person)){
+        this.eligableProgenitors.splice(this.eligableProgenitors.indexOf(person));
+      }
     }
     this.livingPeople = this.livingPeople.filter(person => person.name !== player);
   }
@@ -128,6 +130,7 @@ export class AppComponent {
     });
     this.updateFerility();
     this.updateEligableProgenitors();
+    //this.scrollDown();
   }
 
   getPersonByName(name: string): Person | null {
@@ -204,7 +207,7 @@ export class AppComponent {
       ["I", 1]
     ])
     let res = "";
-    const romans = Object.keys(rules);
+    const romans = Array.from(rules.keys());
     for (let i = 0; i < romans.length; ++i) {
       const val = rules.get(romans[i]);
       while (num >= val!) {
@@ -214,5 +217,12 @@ export class AppComponent {
     }
     return res;
   };
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.scrollDown();
+  }
+  scrollDown(){
+    setTimeout(() => {this.scrollButton?.nativeElement.click();}, 500);
+  }
 
 }

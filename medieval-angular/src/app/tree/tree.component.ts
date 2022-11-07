@@ -141,7 +141,7 @@ export class TreeComponent {
   
   resizeDiagram(){
     this.diagram!.div!.style.width = "2";
-    this.diagram!.div!.style.width = (this.diagram.div!.parentElement!.clientWidth - 2).toString(); 
+    this.diagram!.div!.style.width = (this.diagram.div!.parentElement!.clientWidth + 2).toString(); 
     
     // setTimeout(() => {
     //   console.log('1 second finished!');

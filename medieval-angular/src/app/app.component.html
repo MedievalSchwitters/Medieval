@@ -25,14 +25,14 @@
             <div style="width: 50%; height: 18rem; margin-top: 10px;">
                 <p-card header="Chronicle"
                     [style]="{'position': 'relative', 'height':'18rem'} ">
-                    <p-scrollPanel #chroniclePanel  [style]="{width: '100%', height: '150px'}">
-                        <app-messages></app-messages>
+                    <p-scrollPanel #chroniclePanel  [style]="{width: '100%', height: '150px'}" >
+                        <app-messages ></app-messages>
                     </p-scrollPanel>
                     <div style="display: flex; justify-content:center;">
                         <button pButton (click)="nextTurn()" class="iterate-button">
                             Next Turn
                         </button>
-                        <button (click)="chroniclePanel.scrollTop(500)">Scroll bottom</button>
+                        
                     </div>
                 </p-card>
             </div>
@@ -52,3 +52,4 @@
 <button pButton *ngIf="!playersAddedByCSV && !protosAnthropos" (click)="addPlayersByCSV()">
     add players by CSV
 </button>
+<button #scrollButton (click)="chroniclePanel.scrollTop(9999999)">Scroll bottom</button>
