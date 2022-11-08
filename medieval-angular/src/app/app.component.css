@@ -3,6 +3,7 @@
   display: flex;
   /* or inline-flex */
   justify-content: space-between;
+  height: -webkit-fill-available;
 }
 
 .item-header {
@@ -148,6 +149,7 @@
 .middle-container {
   text-align: center;
   width: -webkit-fill-available;
+  height: -webkit-fill-available;
   /* what */
 }
 

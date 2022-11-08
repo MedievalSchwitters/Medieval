@@ -1,4 +1,4 @@
-<p-card header="Config" [style]="{'height':'18rem'}">
+<p-card header="Config" [style]="{'position': 'relative','height':'18rem'}">
     <div class="inputs-flex">
         <span class="field col-12 md:col-3" >
             <label for="vertical" style="display: block">Max Kids</label>
@@ -33,9 +33,9 @@
             </p-inputNumber>
         </span>
     </div>
-    <span class="p-float-label p-input-filled" style="display: flex; margin-top: 40px;">
-        <input id="float-input" type="text" pInputText [(ngModel)]="playersToAddInput">
+    <span class="p-float-label p-input-filled add-span" style="display: flex;">
+        <input id="float-input" type="text" pInputText [(ngModel)]="playersToAddInput" [style]="{'width': '50%'}">
         <label for="float-input">Player Name(s)</label>
-        <button pButton (click)="addPlayers()">Add Player(s)</button>
+        <button pButton (click)="addPlayers()" [style]="{'width': '50%', 'margin-right': '1rem'}">Add Player(s)</button>
     </span>
 </p-card>

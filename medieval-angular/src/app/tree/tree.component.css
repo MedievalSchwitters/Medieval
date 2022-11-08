@@ -7,5 +7,6 @@
 
 .diagram-container{
   display: flex;
-  justify-content: center;
+  /* justify-content: center; commenting this out killed a baffling bug so I'm leaving the comment. The div was consistentently like 7 pixels to tall for the canvas*/
+  height: 50%
 }

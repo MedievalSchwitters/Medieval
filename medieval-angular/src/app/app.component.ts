@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, ElementRef, Injectable, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import * as go from 'gojs';
 import { Person } from './person';
 import { MessageService as Chronicle } from './message.service';
 import { MessageService } from 'primeng/api';
-import { waitForAsync } from '@angular/core/testing';
-
+import { TreeComponent } from './tree/tree.component';
 
 
 
@@ -17,7 +16,7 @@ import { waitForAsync } from '@angular/core/testing';
   styleUrls: ['./app.component.css'],
   providers: [MessageService]
 })
-export class AppComponent implements OnChanges{
+export class AppComponent implements AfterViewInit{
   title = 'medieval-angular';
 
   public model: go.TreeModel = new go.TreeModel([]);
@@ -33,6 +32,13 @@ export class AppComponent implements OnChanges{
   livingPeople: Person[] = [];
   personKey = 1; //assigned to people to uniqely identify them, used in tree
   playersToAddInput: String = "";
+  //ctrl + paste are God's gift to mankind
+  obs = new ResizeObserver(entries => {
+    for (let entry of entries) {
+      
+      this.treeComponent.resizeDiagram();
+    }
+  });
 
   //config stuff
   maxAge = 10;
@@ -40,6 +46,8 @@ export class AppComponent implements OnChanges{
   adultAge = 3;
   elderlyAge = 7;
   @ViewChild("scrollButton") scrollButton: ElementRef | null = null;
+  @ViewChild(TreeComponent) treeComponent: any;
+
   constructor(private http: HttpClient, private chronicle: Chronicle, private messageService: MessageService) { }
 
   addPlayersByCSV(): void {
@@ -218,11 +226,15 @@ export class AppComponent implements OnChanges{
     return res;
   };
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.scrollDown();
-  }
+ 
+
   scrollDown(){
     setTimeout(() => {this.scrollButton?.nativeElement.click();}, 500);
   }
 
+  
+  ngAfterViewInit(){
+    const container = document.getElementById('middle-container')
+    this.obs.observe(container!);
+  }
 }

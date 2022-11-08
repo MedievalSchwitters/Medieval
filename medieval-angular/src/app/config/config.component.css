@@ -8,3 +8,9 @@
     display: flex;
     justify-content: space-between;
 }
+
+.add-span {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 15px;
+  }

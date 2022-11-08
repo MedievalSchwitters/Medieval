@@ -1,45 +1,44 @@
 <title>Medieval</title>
 <div id="players" class="players-container">
-    <p-card header="Dead Players" [style]="{'width': '15rem', 'margin-right': '10px'}">
+    <p-card header="Dead Players" [style]="{'width': '13rem', 'margin-right': '10px'}">
         <div *ngFor="let player of deadPlayers">
             <button pButton class="p-button-danger" (click)="alivifyPlayer(player)">
                 {{player}}
             </button>
         </div>
     </p-card>
-    <div class="middle-container">
+    <div id="middle-container" class="middle-container">
         <app-tree [model]='model'></app-tree>
 
         <div class="chronicle-and-config">
             <div style="width: 50%; height: 18rem; margin-top: 10px; margin-right: 10px;">
-                <app-config 
-                    (maxAge)="maxAge" (maxAgeEvent)="updateMaxAge($event)" 
-                    (maxNumChildren)="maxNumChildren" (maxNumChildrenEvent)="updateMaxNumChildren($event)" 
-                    (adultAge)="adultAge" (adultAgeEvent)="updateAdultAge($event)"
-                    (elderlyAge)="elderlyAge" (elderlyAgeEvent)="updateElderlyAge($event)" 
-                    [playersToAddInput]="playersToAddInput" 
-                    [deadPlayers]="deadPlayers"
-                    [livingPlayers]="livingPlayers">
+                <app-config (maxAge)="maxAge" (maxAgeEvent)="updateMaxAge($event)" (maxNumChildren)="maxNumChildren"
+                    (maxNumChildrenEvent)="updateMaxNumChildren($event)" (adultAge)="adultAge"
+                    (adultAgeEvent)="updateAdultAge($event)" (elderlyAge)="elderlyAge"
+                    (elderlyAgeEvent)="updateElderlyAge($event)" [playersToAddInput]="playersToAddInput"
+                    [deadPlayers]="deadPlayers" [livingPlayers]="livingPlayers">
                 </app-config>
             </div>
             <div style="width: 50%; height: 18rem; margin-top: 10px;">
-                <p-card header="Chronicle"
-                    [style]="{'position': 'relative', 'height':'18rem'} ">
-                    <p-scrollPanel #chroniclePanel  [style]="{width: '100%', height: '150px'}" >
-                        <app-messages ></app-messages>
+                <p-card header="Chronicle" [style]="{'position': 'relative', 'height':'18rem'} ">
+                    <p-scrollPanel #chroniclePanel [style]="{width: '100%', height: '150px'}">
+                        <app-messages></app-messages>
                     </p-scrollPanel>
                     <div style="display: flex; justify-content:center;">
                         <button pButton (click)="nextTurn()" class="iterate-button">
                             Next Turn
                         </button>
-                        
+
                     </div>
                 </p-card>
+                <!-- <button pButton *ngIf="!playersAddedByCSV && !protosAnthropos" (click)="addPlayersByCSV()">
+                    add players by CSV
+                </button> -->
             </div>
         </div>
     </div>
 
-    <p-card header="Living Players" [style]="{'margin-left': '10px', 'width': '15rem'}">
+    <p-card header="Living Players" [style]="{'margin-left': '10px', 'width': '13rem'}">
         <div *ngFor="let person of livingPeople" class="living-players-buttons">
             <button pButton class="p-button-success" (click)="killPlayer(person.name)">
                 {{person.name}}, age: {{person.age}}
@@ -47,9 +46,7 @@
         </div>
 
     </p-card>
+
+    <!-- <button #scrollButton (click)="chroniclePanel.scrollTop(9999999)">Scroll bottom</button> -->
 </div>
 <p-toast position="bottom-right" key="br"></p-toast>
-<button pButton *ngIf="!playersAddedByCSV && !protosAnthropos" (click)="addPlayersByCSV()">
-    add players by CSV
-</button>
-<button #scrollButton (click)="chroniclePanel.scrollTop(9999999)">Scroll bottom</button>
