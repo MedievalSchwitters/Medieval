@@ -46,7 +46,7 @@
         </div>
 
     </p-card>
-
-    <!-- <button #scrollButton (click)="chroniclePanel.scrollTop(9999999)">Scroll bottom</button> -->
+    <!-- jank to the max -->
+    <button #scrollButton (click)="chroniclePanel.scrollTop(9999999)" [hidden]="false">Scroll bottom</button> 
 </div>
 <p-toast position="bottom-right" key="br"></p-toast>

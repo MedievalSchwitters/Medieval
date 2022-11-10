@@ -67,6 +67,7 @@ export class AppComponent implements AfterViewInit{
       this.deadPlayers = this.deadPlayers.filter(name => name !== player);
       this.livingPlayers.push(player);
       this.livingPeople.push(this.protosAnthropos);
+      this.scrollDown();
       return;
     }
     if (this.eligableProgenitors.length) {
@@ -81,6 +82,7 @@ export class AppComponent implements AfterViewInit{
       this.deadPlayers = this.deadPlayers.filter(name => name !== player);
       this.livingPlayers.push(player);
       this.addNode(child.key, child.name + " " + childIncarnation, progenitor!.key);
+      this.scrollDown();
     }
     else {
       this.messageService.add({ key: "br", severity: 'info', summary: 'Info', detail: 'No More Eligible Progenitors This Turn' });
@@ -105,6 +107,7 @@ export class AppComponent implements AfterViewInit{
       }
     }
     this.livingPeople = this.livingPeople.filter(person => person.name !== player);
+    this.scrollDown();
   }
 
   updateFerility() {
@@ -138,7 +141,7 @@ export class AppComponent implements AfterViewInit{
     });
     this.updateFerility();
     this.updateEligableProgenitors();
-    //this.scrollDown();
+    this.scrollDown();
   }
 
   getPersonByName(name: string): Person | null {

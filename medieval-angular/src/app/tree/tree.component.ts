@@ -140,11 +140,9 @@ export class TreeComponent {
 
   
   resizeDiagram(){
-    console.log("SHALOM")
     this.diagram!.div!.style.width = "2";
     this.diagram!.div!.style.width = (this.diagram.div!.parentElement!.clientWidth + 2).toString(); 
     this.diagram!.div!.style.height = "2";
-    console.log(this.diagram.div!.parentElement!.getBoundingClientRect())
     this.diagram!.div!.style.height = (this.diagram.div!.parentElement!.offsetHeight + 2).toString(); 
     
 
