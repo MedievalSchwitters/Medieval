@@ -39,8 +39,7 @@ export class AppComponent implements AfterViewChecked{
   adultAge = 3;
   elderlyAge = 7;
   @ViewChild("scrollButton") scrollButton: ElementRef | null = null;
-  @ViewChild(TreeComponent) treeComponent: any;
-
+  @ViewChild("chronicleDiv") chronicleDiv: ElementRef | null = null;
   constructor(private http: HttpClient, private chronicle: Chronicle, private messageService: MessageService) { }
 
   addPlayersByCSV(): void {
@@ -112,8 +111,9 @@ export class AppComponent implements AfterViewChecked{
   }
 
   nextTurn() {
-    //this.messages.clear();
     if (!this.protosAnthropos) {
+      //why primeng, why
+      this.chronicleDiv!.nativeElement.children[0].children[0].children[0].children[1].children[0].children[0].children[0].children[0].style.overflow = "overlay";
       this.messageService.add({ key: "br", severity: 'info', detail: "The Game has not yet begun. Create a Person." });
       return;
     }
@@ -223,6 +223,8 @@ export class AppComponent implements AfterViewChecked{
   }
 
   ngAfterViewChecked(): void {
-    this.scrollDown();
+    this.scrollDown();  
   }
+
+  
 }

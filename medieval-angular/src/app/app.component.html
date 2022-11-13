@@ -19,7 +19,7 @@
                     [deadPlayers]="deadPlayers" [livingPlayers]="livingPlayers">
                 </app-config>
             </div>
-            <div style="width: 50%; height: 18rem; margin-top: 10px;">
+            <div #chronicleDiv style="width: 50%; height: 18rem; margin-top: 10px;">
                 <p-card header="Chronicle" [style]="{'position': 'relative', 'height':'18rem'} ">
                     <p-scrollPanel #chroniclePanel [style]="{width: '100%', height: '150px'}">
                         <app-messages></app-messages>
@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <p-card header="Living Players" [style]="{'margin-left': '10px', 'width': '13rem'}">
+    <p-card header="Living Players" [style]="{'margin-left': '10px', 'margin-right': '5px', 'width': '13rem'}">
         <div *ngFor="let person of livingPeople" class="living-players-buttons">
             <button pButton class="p-button-success" (click)="killPlayer(person.name)">
                 {{person.name}}, age: {{person.age}}
