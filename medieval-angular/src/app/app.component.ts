@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, ElementRef, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, ViewChild } from '@angular/core';
 import * as go from 'gojs';
 import { Person } from './person';
 import { MessageService as Chronicle } from './message.service';
@@ -16,7 +16,7 @@ import { TreeComponent } from './tree/tree.component';
   styleUrls: ['./app.component.css'],
   providers: [MessageService]
 })
-export class AppComponent implements AfterViewInit{
+export class AppComponent implements AfterViewChecked{
   title = 'medieval-angular';
 
   public model: go.TreeModel = new go.TreeModel([]);
@@ -32,13 +32,6 @@ export class AppComponent implements AfterViewInit{
   livingPeople: Person[] = [];
   personKey = 1; //assigned to people to uniqely identify them, used in tree
   playersToAddInput: String = "";
-  //ctrl + paste are God's gift to mankind
-  obs = new ResizeObserver(entries => {
-    for (let entry of entries) {
-      
-      this.treeComponent.resizeDiagram();
-    }
-  });
 
   //config stuff
   maxAge = 10;
@@ -67,7 +60,6 @@ export class AppComponent implements AfterViewInit{
       this.deadPlayers = this.deadPlayers.filter(name => name !== player);
       this.livingPlayers.push(player);
       this.livingPeople.push(this.protosAnthropos);
-      this.scrollDown();
       return;
     }
     if (this.eligableProgenitors.length) {
@@ -82,7 +74,6 @@ export class AppComponent implements AfterViewInit{
       this.deadPlayers = this.deadPlayers.filter(name => name !== player);
       this.livingPlayers.push(player);
       this.addNode(child.key, child.name + " " + childIncarnation, progenitor!.key);
-      this.scrollDown();
     }
     else {
       this.messageService.add({ key: "br", severity: 'info', summary: 'Info', detail: 'No More Eligible Progenitors This Turn' });
@@ -107,7 +98,6 @@ export class AppComponent implements AfterViewInit{
       }
     }
     this.livingPeople = this.livingPeople.filter(person => person.name !== player);
-    this.scrollDown();
   }
 
   updateFerility() {
@@ -141,7 +131,6 @@ export class AppComponent implements AfterViewInit{
     });
     this.updateFerility();
     this.updateEligableProgenitors();
-    this.scrollDown();
   }
 
   getPersonByName(name: string): Person | null {
@@ -229,15 +218,11 @@ export class AppComponent implements AfterViewInit{
     return res;
   };
 
- 
-
   scrollDown(){
-    setTimeout(() => {this.scrollButton?.nativeElement.click();}, 500);
+    this.scrollButton?.nativeElement.click();
   }
 
-  
-  ngAfterViewInit(){
-    const container = document.getElementById('middle-container')
-    this.obs.observe(container!);
+  ngAfterViewChecked(): void {
+    this.scrollDown();
   }
 }
