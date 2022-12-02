@@ -1,41 +1,88 @@
-<p-card header="Config" [style]="{'position': 'relative','height':'18rem'}">
-    <div class="inputs-flex">
-        <span class="field col-12 md:col-3" >
-            <label for="vertical" style="display: block">Max Kids</label>
-            <p-inputNumber [style]="{'width':'8rem'}" [inputStyle]="{'width':'8rem'}" [(ngModel)]="maxNumChildren" [showButtons]="false" buttonLayout="horizontal"
-                spinnerMode="vertical" decrementButtonClass="p-button-secondary"
-                incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus"
-                decrementButtonIcon="pi pi-minus" (ngModelChange)="emitMaxNumChildren()">
-            </p-inputNumber>
-        </span>
-        <span class="field col-12 md:col-3" >
-            <label for="vertical" style="display: block">Adult Age</label>
-            <p-inputNumber [style]="{'width':'8rem'}" [inputStyle]="{'width':'8rem'}" [(ngModel)]="adultAge" [showButtons]="false" buttonLayout="horizontal" spinnerMode="horizonatl"
-                decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary"
-                incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" (ngModelChange)="emitAdultAge()">
-            </p-inputNumber>
-        </span>
+<p-card header="Config" [style]="{ position: 'relative', height: '18rem' }">
+  <div id="protos" class="vertical-flex">
+    <div id="deuteros" class="inputs-flex">
+      <span>
+        <label for="vertical" style="display: block">Max Kids</label>
+        <p-inputNumber
+          [inputStyle]="{ width: '100%' }"
+          [(ngModel)]="maxNumChildren"
+          [showButtons]="false"
+          buttonLayout="horizontal"
+          spinnerMode="vertical"
+          decrementButtonClass="p-button-secondary"
+          incrementButtonClass="p-button-secondary"
+          incrementButtonIcon="pi pi-plus"
+          decrementButtonIcon="pi pi-minus"
+          (ngModelChange)="emitMaxNumChildren()"
+        >
+        </p-inputNumber>
+      </span>
+      <span>
+        <label for="vertical" style="display: block">Adult Age</label>
+        <p-inputNumber
+          [inputStyle]="{ width: '100%' }"
+          [(ngModel)]="adultAge"
+          [showButtons]="false"
+          buttonLayout="horizontal"
+          spinnerMode="horizonatl"
+          decrementButtonClass="p-button-secondary"
+          incrementButtonClass="p-button-secondary"
+          incrementButtonIcon="pi pi-plus"
+          decrementButtonIcon="pi pi-minus"
+          (ngModelChange)="emitAdultAge()"
+        >
+        </p-inputNumber>
+      </span>
     </div>
-    <div class="inputs-flex">
-        <span class="field col-12 md:col-3" >
-            <label for="vertical" style="display: block">Old Age</label>
-            <p-inputNumber [style]="{'width':'8rem'}" [inputStyle]="{'width':'8rem'}" [(ngModel)]="elderlyAge" [showButtons]="false" buttonLayout="horizontal"
-                spinnerMode="vertical" decrementButtonClass="p-button-secondary"
-                incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus"
-                decrementButtonIcon="pi pi-minus" (ngModelChange)="emitElderlyAge()">
-            </p-inputNumber>
-        </span>
-        <span class="field col-12 md:col-3" >
-            <label for="vertical" style="display: block">Max Age</label>
-            <p-inputNumber [style]="{'width':'8rem'}" [inputStyle]="{'width':'8rem'}" [(ngModel)]="maxAge" [showButtons]="false" buttonLayout="horizontal" spinnerMode="horizonatl"
-                decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary"
-                incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" (ngModelChange)="emitMaxAge()">
-            </p-inputNumber>
-        </span>
+    <div id="tritos" class="inputs-flex">
+      <span>
+        <label for="vertical" style="display: block">Old Age</label>
+        <p-inputNumber
+          [inputStyle]="{ width: '100%' }"
+          [(ngModel)]="elderlyAge"
+          [showButtons]="false"
+          buttonLayout="horizontal"
+          spinnerMode="vertical"
+          decrementButtonClass="p-button-secondary"
+          incrementButtonClass="p-button-secondary"
+          incrementButtonIcon="pi pi-plus"
+          decrementButtonIcon="pi pi-minus"
+          (ngModelChange)="emitElderlyAge()"
+        >
+        </p-inputNumber>
+      </span>
+      <span>
+        <label for="vertical" style="display: block">Max Age</label>
+        <p-inputNumber
+          [inputStyle]="{ width: '100%' }"
+          [(ngModel)]="maxAge"
+          [showButtons]="false"
+          buttonLayout="horizontal"
+          spinnerMode="horizonatl"
+          decrementButtonClass="p-button-secondary"
+          incrementButtonClass="p-button-secondary"
+          incrementButtonIcon="pi pi-plus"
+          decrementButtonIcon="pi pi-minus"
+          (ngModelChange)="emitMaxAge()"
+        >
+        </p-inputNumber>
+      </span>
     </div>
-    <span class="p-float-label p-input-filled add-span" style="display: flex;">
-        <input id="float-input" type="text" pInputText [(ngModel)]="playersToAddInput" [style]="{'width': '50%'}">
-        <label for="float-input">Player Name(s)</label>
-        <button pButton (click)="addPlayers()" [style]="{'width': '50%', 'margin-right': '1rem'}">Add Player(s)</button>
-    </span>
+    <div
+      class="p-float-label p-input-filled inputs-flex"
+      style="display: flex;"
+    >
+      <input
+        id="float-input"
+        type="text"
+        pInputText
+        [(ngModel)]="playersToAddInput"
+        [style]="{ width: '50%' }"
+      />
+      <label for="float-input">Player Name(s)</label>
+      <button pButton (click)="addPlayers()" [style]="{ width: '50%' }">
+        Add Player(s)
+      </button>
+    </div>
+  </div>
 </p-card>

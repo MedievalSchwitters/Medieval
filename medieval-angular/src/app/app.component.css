@@ -18,13 +18,12 @@
   font-weight: bold;
 }
 
-
 /* CSS */
 .button-7-alive {
   background-color: green;
   border: 1px solid transparent;
   border-radius: 3px;
-  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
@@ -52,7 +51,7 @@
 }
 
 .button-7-alive:focus {
-  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
 }
 
 .button-7-alive:active {
@@ -64,7 +63,7 @@
   background-color: red;
   border: 1px solid transparent;
   border-radius: 3px;
-  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
@@ -92,7 +91,7 @@
 }
 
 .button-7-dead:focus {
-  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
 }
 
 .button-7-dead:active {
@@ -104,7 +103,7 @@
   background-color: blue;
   border: 1px solid transparent;
   border-radius: 3px;
-  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
@@ -132,7 +131,7 @@
 }
 
 .button-7:focus {
-  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
 }
 
 .button-7:active {
@@ -155,12 +154,11 @@
 
 .chronicle-and-config {
   display: flex;
-  
 }
 
 /* MessagesComponent's private CSS styles */
 h2 {
-  color: #A80000;
+  color: #a80000;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }

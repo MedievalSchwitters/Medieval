@@ -1,16 +1,16 @@
-
-  
-.configs{
-    font-family: Arial, Helvetica, sans-serif;
+.configs {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.inputs-flex{
-    display: flex;
-    justify-content: space-between;
+.inputs-flex {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
 }
 
-.add-span {
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 15px;
-  }
+.vertical-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 72%
+}

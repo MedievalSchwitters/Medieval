@@ -13,18 +13,16 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ConfigComponent } from './config/config.component';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CardModule } from 'primeng/card';
-import {ToastModule} from 'primeng/toast';
+import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
-
-
 
 @NgModule({
   declarations: [
     AppComponent,
     TreeComponent,
     MessagesComponent,
-    ConfigComponent
+    ConfigComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +39,6 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     ScrollPanelModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
