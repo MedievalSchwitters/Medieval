@@ -44,6 +44,11 @@ export class ConfigComponent implements OnInit {
         playersToAdd[i].length < 19
       ) {
         this.deadPlayers.push(playersToAdd[i]);
+      } else if (this.deadPlayers.includes(playersToAdd[i])) {
+        const index = this.deadPlayers.indexOf(playersToAdd[i], 0);
+        if (index > -1) {
+          this.deadPlayers.splice(index, 1);
+        }
       }
     }
     this.playersToAddInput = '';
